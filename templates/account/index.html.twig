@@ -1,20 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountController!{% endblock %}
+{% block title %}Liste des membres
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="container">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+		<h1 class="my-5">Liste des membres</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/==PROGRAMMATION==/Formations/WEBFORCE 3/soutenance groupe/maison-des-apprentis/src/Controller/AccountController.php'|file_link(0) }}">src/Controller/AccountController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/==PROGRAMMATION==/Formations/WEBFORCE 3/soutenance groupe/maison-des-apprentis/templates/account/index.html.twig'|file_link(0) }}">templates/account/index.html.twig</a></code></li>
-    </ul>
-</div>
+		<table class="table table-hover border text-center">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>Avatar</th>
+					<th>Nom Complet</th>
+					<th>email</th>
+					{# <th>articles en ligne</th> #}
+					<th colspan="2">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr class="table">
+						<td>{{user.id}}</td>
+						<td>
+							<img src="{{user.avatar}}" width="60px" class="rounded">
+						</td>
+						<td>{{user.fullname}}</td>
+						<td>{{user.email}}</td>
+						{# <td>{{user.articles | length }}</td> #}
+						<td>
+							<a href="{{ path('user_show' , {'slug': user.slug } ) }}" class="btn btn-primary">
+								<i class="fas fa-eye"></i>
+							</a>
+						</td>
+						<td>
+							<form class="d-inline" action="{{ path('user_delete' , {'slug': user.slug } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette utilisateur ?');">
+								<button class="btn btn-danger">
+									<i class="fa fa-trash"></i>
+								</button>
+							</form>
+						</td>
+					</tr>
+					<tr>
+					{% endfor %}
+				</tbody>
+			</tbody>
+		</table>
+
+	</div>
+
 {% endblock %}

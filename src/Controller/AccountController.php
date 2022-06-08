@@ -74,7 +74,7 @@ class AccountController extends AbstractController
         $this->addFlash("danger","Votre compte a bien été supprimé");
 
 
-        return $this->redirectToRoute('articles_index');
+        return $this->redirectToRoute('app_account');
 
     }
 
