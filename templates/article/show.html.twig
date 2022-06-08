@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{article.title | title}}{% endblock %}
+
+{% block body %}
+
+<div class="shadow border p-5 my-5">
+    <h1 class="my-5 text-center border shadow">
+        {{article.title | title}}
+    </h1>
+
+    <p class="text-left h4">
+        Ecrit le : {{article.creationDate | date('d/m/Y à H:i')}}, par {{article.author}}
+    </p>
+
+    <div class="my-5 shadow  border p-5">
+        <hr>
+        {{article.content | raw}}
+        <hr>
+    </div>
+
+    <hr>
+
+        <div>
+            <p class="h3 text-center p-2 shadow">
+                Soyez le premier a commenter !
+                <br>
+                <i class="fa fa-comments my-2"></i>
+            </p>
+        </div>
+</div>
+
+{% endblock %}

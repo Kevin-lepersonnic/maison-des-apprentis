@@ -1,12 +1,9 @@
-{# {% set article = {'title':'Kevin','creationDate':'04/01/2039'} %} #}
-
 <div class="col-xl-4 col-lg-4 col-md-8 col-sm-12 m-auto text-center">
     <div class="card bg-light my-5 shadow ">
         <h3 class="card-header">{{article.title | title}}</h3>
-        {# <img height="350px" class="rounded-circle border border-success m-2" src="{{article.image}}" alt="Card image"> #}
         <div class="card-body">
-          <p class="card-text">{{article.content}}</p>
-          {# <a href="{{path("article_show", {'slug':article.slug} ) }}" class="btn btn-primary rounded">Lire la suite</a> #}
+          <p class="card-text">{{article.content | raw}}</p>
+          <a href="{{path("article_show", {'slug':article.slug} ) }}" class="btn btn-primary rounded">Lire la suite</a>
           <div class="my-3">
               <a href="#" class="card-link">{{article.author}}</a>
           </div>
