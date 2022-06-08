@@ -1,5 +1,5 @@
 
-        
+        {% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'admin', 'isConnected': true} %}
         
         
         <div class="wrapper d-flex align-items-stretch">
@@ -86,7 +86,7 @@
                     <a class="nav-link text-light" href="#">Home</a>
                 </li>
 
-{% if condition %}
+{% if user.isConnected %}
                 <li class="nav-item">
                     <a class="nav-link text-light" href="#">Mon compte</a>
                 </li>
