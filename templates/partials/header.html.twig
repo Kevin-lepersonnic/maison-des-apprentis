@@ -1,4 +1,8 @@
-		<div class="wrapper d-flex align-items-stretch">
+
+        
+        
+        
+        <div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar">
 				<div class="p-4 pt-5">
           <!-- photo de profile possibilité de faire un accès au profile en cliquant dessus -->
@@ -81,12 +85,24 @@
                 <li class="nav-item active">
                     <a class="nav-link text-light" href="#">Home</a>
                 </li>
+
+{% if condition %}
                 <li class="nav-item">
                     <a class="nav-link text-light" href="#">Mon compte</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-light" href="#">Logout</a>
                 </li>
+        {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Inscription</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Connexion</a>
+                </li>
+{% endif %}
+
+
               </ul>
             </div>
           </div>
