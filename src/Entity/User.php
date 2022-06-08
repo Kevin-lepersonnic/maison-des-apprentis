@@ -71,7 +71,7 @@ class User
 
     public function getFullname(): ?string
     {
-        return $this->fullname;
+        return $this->lastname ." " .$this->firstname;
     }
 
     public function setFullname(string $fullname): self
