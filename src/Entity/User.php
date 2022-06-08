@@ -6,10 +6,11 @@ use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\HasLifecycleCallbacks()]
-class User 
+class User implements UserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -148,6 +149,32 @@ class User
             $slug = new Slugify();
             $this->slug = $slug->slugify($this->getFullname() . time() . hash('sha256', $this->getFirstname()));
         }
+
+    }
+
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+    public function getPassword()
+    {
+        return $this->hash;
+    }
+    public function getSalt()
+    {
+        
+    }
+    public function getUsername()
+    {
+        return $this->email;
+    }
+    public function eraseCredentials()
+    {
+        
+    }
+
+    // possible bug intervertir avec getUsername
+    public function getUserIdentifier(){
 
     }
 }
