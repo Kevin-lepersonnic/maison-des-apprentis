@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
@@ -18,9 +19,21 @@ class User implements UserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Le nom est trop court ! Minimum {{ limit }} charactères requis',
+        maxMessage: 'Le nom est trop long ! Maximum  {{ limit }} charactères',
+    )]
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Le nom est trop court ! Minimum {{ limit }} charactères requis',
+        maxMessage: 'Le nom est trop long ! Maximum  {{ limit }} charactères',
+    )]
     private $lastname;
 
 
@@ -30,12 +43,23 @@ class User implements UserInterface
     private $email;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Le mot de passe est trop court ! Minimum {{ limit }} charactères requis',
+        maxMessage: 'Le mot de passe est trop long ! Maximum  {{ limit }} charactères',
+    )]
     private $hash;
 
-
+    #[Assert\EqualTo(propertyPath: 'hash',
+                    message: 'votre mot de passe doit être identique'
+    )]
     private $passwordConfirm;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Url(
+        message: "l'url n'est pas valide"
+    )] 
     private $avatar;
 
     #[ORM\Column(type: 'string', length: 255)]
