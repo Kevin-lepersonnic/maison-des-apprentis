@@ -61,10 +61,10 @@
             </li>
             {% if app.user %}
 	          <li>
-              <a href="#">Settings</a>
+              <a href="{{ path('user_edit' , {'slug': app.user.slug } ) }}">Settings</a>
 	          </li>
 	          <li>
-              <a href="#">Profile</a>
+              <a href="{{ path('user_show' , {'slug': app.user.slug } ) }}">Profile</a>
 	          </li>
 	          <li>
               <a href="#">Logout</a>
@@ -98,7 +98,7 @@
 {% if app.user == true %}
 
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Mon compte</a>
+                    <a class="nav-link text-light" href="{{ path('user_show' , {'slug': app.user.slug } ) }}">Mon compte</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-light" href="{{path('account_logout')}}">Logout</a>
