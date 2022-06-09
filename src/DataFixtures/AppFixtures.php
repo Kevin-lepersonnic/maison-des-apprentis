@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use Faker;
+use App\Entity\Role;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -90,6 +91,56 @@ class AppFixtures extends Fixture
                 ->setAvatar('https://www.happybeertime.com/wp-content/uploads/2013/11/ventre-biere.jpg')
                 ->setHash($this->encoder->hashPassword($user5, "password"));        
         $manager->persist($user5);
+
+        // création des Users Admin
+        $adminRole = new Role();
+        $adminRole->setTitle('ROLE_ADMIN');
+        $manager->persist($adminRole);
+
+        $adminUser1 = new User();
+        $adminUser1->setFirstname('Florian')
+                    ->setLastname('Admin')
+                    ->setEmail('florian@admin.fr')
+                    ->setAvatar('https://www.booska-p.com/wp-content/uploads/2021/10/da-couvre-la-ma-re-de-sangoku-photo.jpg')
+                    ->setHash($this->encoder->hashPassword($adminUser1, "password"))
+                    ->addUserRole($adminRole);
+        $manager->persist($adminUser1);
+
+        $adminUser2 = new User();
+        $adminUser2->setFirstname('Kevin')
+                    ->setLastname('Admin')
+                    ->setEmail('kevin@admin.fr')
+                    ->setAvatar('https://www.booska-p.com/wp-content/uploads/2021/10/da-couvre-la-ma-re-de-sangoku-photo.jpg')
+                    ->setHash($this->encoder->hashPassword($adminUser2, "password"))
+                    ->addUserRole($adminRole);
+        $manager->persist($adminUser2);
+
+        $adminUser3 = new User();
+        $adminUser3->setFirstname('Hakim')
+                    ->setLastname('Admin')
+                    ->setEmail('hakim@admin.fr')
+                    ->setAvatar('https://www.booska-p.com/wp-content/uploads/2021/10/da-couvre-la-ma-re-de-sangoku-photo.jpg')
+                    ->setHash($this->encoder->hashPassword($adminUser3, "password"))
+                    ->addUserRole($adminRole);
+        $manager->persist($adminUser3);
+
+        $adminUser4 = new User();
+        $adminUser4->setFirstname('Tristan')
+                    ->setLastname('Admin')
+                    ->setEmail('tristan@admin.fr')
+                    ->setAvatar('https://www.booska-p.com/wp-content/uploads/2021/10/da-couvre-la-ma-re-de-sangoku-photo.jpg')
+                    ->setHash($this->encoder->hashPassword($adminUser4, "password"))
+                    ->addUserRole($adminRole);
+        $manager->persist($adminUser4);
+
+        $adminUser5 = new User();
+        $adminUser5->setFirstname('Anthony')
+                    ->setLastname('Admin')
+                    ->setEmail('anthony@admin.fr')
+                    ->setAvatar('https://www.booska-p.com/wp-content/uploads/2021/10/da-couvre-la-ma-re-de-sangoku-photo.jpg')
+                    ->setHash($this->encoder->hashPassword($adminUser5, "password"))
+                    ->addUserRole($adminRole);
+        $manager->persist($adminUser5);
 
         $manager->flush();
     }
