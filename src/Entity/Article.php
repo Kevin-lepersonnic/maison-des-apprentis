@@ -28,12 +28,16 @@ class Article
     #[Assert\NotBlank(message:"Ce champs ne peut pas etre vide")]
     private $title;
 
+<<<<<<< Updated upstream
     #[ORM\Column(type: 'text')]
     #[Assert\Length(
         min: 10,
         minMessage: 'Minimum {{ limit }} caractères',
     )]
     #[Assert\NotBlank(message:"Ce champs ne peut pas etre vide")]
+=======
+    #[ORM\Column(type: 'text', length: 255)]
+>>>>>>> Stashed changes
     private $content;
 
     #[ORM\Column(type: 'datetime')]
