@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220608102332 extends AbstractMigration
+final class Version20220609081838 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -28,7 +28,6 @@ final class Version20220608102332 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP TABLE category');
-        //
         $this->addSql('DROP TABLE messenger_messages');
     }
 }
