@@ -1,0 +1,109 @@
+
+        {% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'admin', 'isConnected': true} %}
+        
+
+        <div class="wrapper d-flex align-items-stretch">
+			<nav id="sidebar">
+				<div class="p-4 pt-5">
+          <!-- photo de profile possibilité de faire un accès au profile en cliquant dessus -->
+		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url({{asset('../../img/logo.jpg')}});"></a>
+	        <ul class="list-unstyled components mb-5">
+	          <li>
+              <a href="#">Home</a>
+	          </li>
+	          </li>
+            <li>
+              <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bibliothèque</a>
+              <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="#">All</a>
+                </li>
+                <li>
+                    <a href="#">HTML/CSS</a>
+                </li>
+                <li>
+                    <a href="#">JavaScript</a>
+                </li>
+                <li>
+                    <a href="#">PHP</a>
+                </li>
+              </ul>
+            </li>
+	          <li>
+              <a href="#">Calendrier</a>
+	          </li>
+	          <li>
+              <a href="#">Tableau de bord</a>
+	          </li>
+            <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="#">All</a>
+                </li>
+                <li>
+                    <a href="#">Subscribed</a>
+                </li>
+                <li>
+                    <a href="#">Non-subscribed</a>
+                </li>
+                <li>
+                    <a href="#">New</a>
+                </li>
+              </ul>
+            </li>
+	          <li>
+              <a href="#">Settings</a>
+	          </li>
+	          <li>
+              <a href="#">Profile</a>
+	          </li>
+	          <li>
+              <a href="#">Logout</a>
+	          </li>
+	        </ul>
+
+	      </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-sm navbar-light bg-dark">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-dark">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-sm-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-user"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-light" href="#">Home</a>
+                </li>
+
+{% if user.isConnected %}
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Mon compte</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Logout</a>
+                </li>
+        {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Inscription</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="#">Connexion</a>
+                </li>
+{% endif %}
+
+
+              </ul>
+            </div>
+          </div>
+        </nav>
