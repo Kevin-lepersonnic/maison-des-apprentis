@@ -22,6 +22,12 @@ class AccountController extends AbstractController
         ]);
     }
 
+    #[Route('/logout', name: 'account_logout')]
+    public function logout()
+    {
+       
+    }
+
     #[Route('/account', name: 'app_account')]
     public function index(UserRepository $userRepository): Response
     {
