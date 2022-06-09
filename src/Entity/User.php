@@ -186,7 +186,7 @@ class User implements UserInterface
     }
     public function getSalt()
     {
-        
+        return null;
     }
     public function getUsername()
     {
@@ -199,6 +199,6 @@ class User implements UserInterface
 
     // possible bug intervertir avec getUsername
     public function getUserIdentifier(){
-
+        return $this->email;
     }
 }

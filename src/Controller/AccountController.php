@@ -10,9 +10,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AccountController extends AbstractController
 {
+    #[Route('/login', name: 'account_login')]
+    public function login()
+    {
+        return $this->render('account/login.html.twig', [
+            
+        ]);
+    }
+
     #[Route('/account', name: 'app_account')]
     public function index(UserRepository $userRepository): Response
     {
@@ -22,13 +31,16 @@ class AccountController extends AbstractController
     }
 
     #[Route('/account/new', name: 'user_create')]
-    public function create(Request $request, EntityManagerInterface $manager){
+    public function create(Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $encoder){
 
             $user= new User();
             $form = $this->createForm(AccountType::class,$user);
             $form->handleRequest($request);
 
             if($form->isSubmitted() && $form->isValid()){
+                $hash = $encoder->hashPassword($user, $user->getHash());
+                $user->setHash($hash);
+
                 $manager->persist($user);
                 $manager->flush();
 
@@ -45,12 +57,16 @@ class AccountController extends AbstractController
 
     
     #[Route('/account/{slug}/edit', name: 'user_edit')]
-    public function edit(Request $request, User $user, EntityManagerInterface $manager)
+    public function edit(Request $request, User $user, EntityManagerInterface $manager, UserPasswordHasherInterface $encoder)
     {
         $form = $this->createForm(AccountType::class, $user);
         $form->handleRequest($request);
 
             if($form->isSubmitted() && $form->isValid()){
+
+                $hash = $encoder->hashPassword($user, $user->getHash());
+                $user->setHash($hash);
+
                 $manager->flush();
 
                 $this->addFlash("info","Votre compte <strong>{$user->getFullname()}</strong> a bien été modifié");
