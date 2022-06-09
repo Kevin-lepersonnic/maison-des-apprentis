@@ -47,6 +47,7 @@ class Article
     private $slug;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\Url(message:"Ceci n'est pas un URL (lien d'une page web)")]
     private $image;
 
     public function getId(): ?int

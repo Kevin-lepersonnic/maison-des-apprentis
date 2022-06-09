@@ -85,6 +85,6 @@ class ArticleController extends AbstractController
 
         $this->addFlash('danger',"L'article a bien été supprimé");
       
-        return $this->redirectToRoute('articles_index');
+        return $this->redirectToRoute('app_article');
     }
 }
