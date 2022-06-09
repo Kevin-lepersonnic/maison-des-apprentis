@@ -17,7 +17,8 @@ class AppFixtures extends Fixture
 
             $article = new Article();
             $article->setTitle($faker->word($faker->randomDigit()));
-            $article->setContent('<p>'. implode('</p><p>', $faker->words(40)) .'</p>');
+            $article->setImage("https://www.événementiel.net/wp-content/uploads/2014/02/default-placeholder.png");
+            $article->setContent('<p>'. implode('</p><p>', $faker->words(25)) .'</p>');
             $article->setAuthor($faker->name());
          
             $manager->persist($article);

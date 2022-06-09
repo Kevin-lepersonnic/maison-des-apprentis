@@ -6,6 +6,8 @@ use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: ArticleRepository::class)]
 #[ORM\HasLifecycleCallbacks()]
@@ -17,19 +19,35 @@ class Article
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(
+        min: 3,
+        max: 50,
+        minMessage: 'Minimum {{ limit }} caractères',
+        maxMessage: 'Maximum {{ limit }} caractères',
+    )]
+    #[Assert\NotBlank(message:"Ce champs ne peut pas etre vide")]
     private $title;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'text')]
+    #[Assert\Length(
+        min: 10,
+        minMessage: 'Minimum {{ limit }} caractères',
+    )]
+    #[Assert\NotBlank(message:"Ce champs ne peut pas etre vide")]
     private $content;
 
     #[ORM\Column(type: 'datetime')]
     private $creationDate;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank(message:"Ce champs ne peut pas etre vide")]
     private $author;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $slug;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image;
 
     public function getId(): ?int
     {
@@ -96,6 +114,18 @@ class Article
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+    
     #[ORM\PrePersist]
     public function initSlug(){
 
@@ -111,4 +141,6 @@ class Article
            $this->creationDate = new \DateTime();
         }
     }
+
+    
 }

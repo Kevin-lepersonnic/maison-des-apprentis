@@ -1,6 +1,7 @@
 <div class="col-xl-4 col-lg-4 col-md-8 col-sm-12 m-auto text-center">
     <div class="card bg-light my-5 shadow ">
         <h3 class="card-header">{{article.title | title}}</h3>
+        <img src="{{article.image}}" alt="photo de l'article {{article.title}}">
         <div class="card-body">
           <p class="card-text">{{article.content | raw}}</p>
           <a href="{{path("article_show", {'slug':article.slug} ) }}" class="btn btn-primary rounded">Lire la suite</a>
@@ -11,5 +12,19 @@
         <div class="card-footer text-muted">
          {{article.creationDate | date('d/m/y à H:i', "Europe/Paris" )}}
         </div>
+        <div>
+            <a href="{{ path('article_edit' , {'slug': article.slug } ) }}" class="btn btn-info mx-2">
+                Modifier l'article
+                <i class="fa fa-pen"></i>
+            </a>
+            
+            <form class="d-inline" action="{{ path('article_delete' , {'slug': article.slug } ) }}" 
+                onsubmit="return confirm('Etes vous sur de vouloir supprimer cette article ?');">
+                <button class="btn btn-danger mx-2">
+                        Supprimer l'article
+                    <i class="fa fa-trash"></i>
+                </button>
+            </form>
+		</div>
     </div>
 </div>

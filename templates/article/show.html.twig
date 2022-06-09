@@ -13,6 +13,8 @@
         Ecrit le : {{article.creationDate | date('d/m/Y à H:i')}}, par {{article.author}}
     </p>
 
+    <img src="{{article.image}}" alt="photo de l'article {{article.title}}" width="450px">
+
     <div class="my-5 shadow  border p-5">
         <hr>
         {{article.content | raw}}
