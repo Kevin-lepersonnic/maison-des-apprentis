@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use Faker;
+use App\Entity\Article;
 use App\Entity\Role;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
@@ -24,6 +25,19 @@ class AppFixtures extends Fixture
 
         $faker = Faker\Factory::create('fr_FR');
 
+        // ----------------  Fixture pour Articles ---------------
+        for ($i=0; $i < 30 ; $i++) { 
+
+            $article = new Article();
+            $article->setTitle($faker->word($faker->randomDigit()));
+            $article->setImage("https://www.événementiel.net/wp-content/uploads/2014/02/default-placeholder.png");
+            $article->setContent('<p>'. implode('</p><p>', $faker->words(25)) .'</p>');
+            $article->setAuthor($faker->name());
+         
+            $manager->persist($article);
+        }
+
+        // ----------------   Fixture pour User ----------------
         $users = [];
         $genres = ['male', 'female'];
 
@@ -142,6 +156,5 @@ class AppFixtures extends Fixture
                     ->addUserRole($adminRole);
         $manager->persist($adminUser5);
 
-        $manager->flush();
     }
 }
