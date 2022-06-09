@@ -11933,5 +11933,6 @@ a[data-toggle="collapse"] {
 .divHome {
   height: 55vh;
   width: 100%;
-  z-index: 0;
+  z-index: -10;
+  filter: brightness(50%);
 }
