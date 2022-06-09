@@ -156,5 +156,8 @@ class AppFixtures extends Fixture
                     ->addUserRole($adminRole);
         $manager->persist($adminUser5);
 
+        $manager->flush();
     }
+
+    
 }
