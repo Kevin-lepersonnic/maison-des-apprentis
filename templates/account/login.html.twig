@@ -7,11 +7,11 @@
         <h1 class="my-5 text-center">Connectez-vous</h1>
     </div>
 
-    {# {% if hasError %}
+    {% if hasError %}
         <div class="col-4 alert alert-danger m-auto">
         Email ou mot de passe invalide
         </div>
-    {% endif %} #}
+    {% endif %}
 
     <form action="{{ path('account_login')}}" class="m-auto col-6" method="POST">
         <div class="form-group">

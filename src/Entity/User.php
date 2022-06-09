@@ -3,14 +3,19 @@
 namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\HasLifecycleCallbacks()]
+#[UniqueEntity(
+    fields :'email',
+    message : 'Adresse email déjà utilisé merci d\'en utiliser une autre'
+)]
 class User implements UserInterface
 {
     #[ORM\Id]
