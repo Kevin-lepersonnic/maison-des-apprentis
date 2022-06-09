@@ -46,7 +46,7 @@
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
-                    <a href="#">All</a>
+                    <a href="{{path('app_account')}}">All</a>
                 </li>
                 <li>
                     <a href="#">Subscribed</a>
@@ -67,7 +67,7 @@
               <a href="{{ path('user_show' , {'slug': app.user.slug } ) }}">Profile</a>
 	          </li>
 	          <li>
-              <a href="#">Logout</a>
+              <a href="{{path('account_logout')}}">Logout</a>
 	          </li>
             {% endif %}
 	        </ul>
