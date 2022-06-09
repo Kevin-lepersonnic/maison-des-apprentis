@@ -1,15 +1,16 @@
 
-        {% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'admin', 'isConnected': true} %}
         
 
         <div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar">
 				<div class="p-4 pt-5">
           <!-- photo de profile possibilité de faire un accès au profile en cliquant dessus -->
-		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url({{asset('../../img/logo.jpg')}});"></a>
+		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url({{asset('../../img/logo.jpg')}})
+          {# ({{app.user.avatar}}) ({{asset('../../img/logo.jpg')}}) #}
+           ;"></a>
 	        <ul class="list-unstyled components mb-5">
 	          <li>
-              <a href="#">Home</a>
+              <a href="{{path('home_page')}}">Home</a>
 	          </li>
 	          </li>
             <li>
@@ -52,6 +53,7 @@
                 </li>
               </ul>
             </li>
+            {% if app.user %}
 	          <li>
               <a href="#">Settings</a>
 	          </li>
@@ -61,6 +63,7 @@
 	          <li>
               <a href="#">Logout</a>
 	          </li>
+            {% endif %}
 	        </ul>
 
 	      </div>
@@ -83,24 +86,27 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link text-light" href="#">Home</a>
+                    <a class="nav-link text-light" href="{{path('home_page')}}">Home</a>
                 </li>
 
-{% if user.isConnected %}
+{% if app.user == true %}
+
                 <li class="nav-item">
                     <a class="nav-link text-light" href="#">Mon compte</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Logout</a>
+                    <a class="nav-link text-light" href="{{path('account_logout')}}">Logout</a>
                 </li>
-        {% else %}
+{% else %}
+  
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Inscription</a>
+                    <a class="nav-link text-light" href="{{path('user_create')}}">Inscription</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Connexion</a>
+                    <a class="nav-link text-light" href="{{path('account_login')}}">Connexion</a>
                 </li>
 {% endif %}
+
 
 
               </ul>
