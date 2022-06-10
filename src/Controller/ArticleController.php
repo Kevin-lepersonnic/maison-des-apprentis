@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController
@@ -55,8 +56,8 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/articles/{slug}/edit', name: 'article_edit')]
-    #[Security("is_granted('ROLE_USER') and user === article.getAuthor()")]
-    public function edit(Request $request, Article $article, EntityManagerInterface $manager, User $user)
+    #[Security("is_granted('ROLE_ADMIN') || is_granted('ROLE_USER') and user === article.getAuthor()")]
+    public function edit(Request $request, Article $article, EntityManagerInterface $manager)
     {
         $form = $this->createForm(ArticleType::class, $article);
 
@@ -67,8 +68,7 @@ class ArticleController extends AbstractController
                 $manager->persist($article);
                 $manager->flush();
 
-                $this->addFlash('info', 
-                                "L'article <strong>{$article->getTitle()}</strong> a bien été modifié");
+                $this->addFlash('info', "L'article <strong>{$article->getTitle()}</strong> a bien été modifié");
 
                 return $this->redirectToRoute('article_show' , [
                     'slug' => $article->getSlug()
@@ -82,7 +82,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/articles/{slug}/delete', name: 'article_delete')]
-    #[Security("is_granted('ROLE_USER') and user === article.getAuthor()")]
+    #[Security("is_granted('ROLE_ADMIN') || is_granted('ROLE_USER') and user === article.getAuthor()")]
     public function delete(EntityManagerInterface $manager, Article $article)
     {
         $manager->remove($article);
