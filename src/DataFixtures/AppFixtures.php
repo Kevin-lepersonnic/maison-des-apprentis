@@ -146,6 +146,21 @@ class AppFixtures extends Fixture
                     ->addUserRole($adminRole);
         $manager->persist($adminUser5);
 
+        // --------------- Fixture Category ----------------------
+
+        $categories=[];
+
+        for ($i=0; $i < 10 ; $i++) { 
+
+            $category = new Category();
+            $category   ->setName($faker->word($faker->randomDigit()))
+                        ->setImage("https://picsum.photos/200/300");
+         
+            $manager->persist($category);
+            $categories[] = $category;
+        }
+
+
         // ----------------  Fixture pour Articles ---------------
         
         for ($i=0; $i < 30 ; $i++) { 
@@ -153,23 +168,17 @@ class AppFixtures extends Fixture
             $article = new Article();
             
             $author = $users[mt_rand(0, count($users) -1)];
-
+            $category = $categories[mt_rand(0, count($categories) -1)];
             $article->setTitle($faker->word($faker->randomDigit()))
                     ->setImage("https://www.événementiel.net/wp-content/uploads/2014/02/default-placeholder.png")
                     ->setContent('<p>'. implode('</p><p>', $faker->words(25)) .'</p>')
-                    ->setAuthor($author);
+                    ->setAuthor($author)
+                    ->setCategory($category);
         
             $manager->persist($article);
         }
 
-        for ($i=0; $i < 30 ; $i++) { 
-
-            $category = new Category();
-            $category->setName($faker->word($faker->randomDigit()));
-         
-            $manager->persist($category);
-        }
-
+        
          $manager->flush();
     }
 }
