@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker;
 use App\Entity\Article;
+use App\Entity\Category;
 use App\Entity\Role;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
@@ -159,6 +160,14 @@ class AppFixtures extends Fixture
                     ->setAuthor($author);
         
             $manager->persist($article);
+        }
+
+        for ($i=0; $i < 30 ; $i++) { 
+
+            $category = new Category();
+            $category->setName($faker->word($faker->randomDigit()));
+         
+            $manager->persist($category);
         }
 
          $manager->flush();
