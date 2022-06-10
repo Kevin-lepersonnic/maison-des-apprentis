@@ -75,9 +75,13 @@ class User implements UserInterface
     #[ORM\ManyToMany(targetEntity: Role::class, mappedBy: 'users')]
     private $userRoles;
 
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Article::class)]
+    private $articles;
+
     public function __construct()
     {
         $this->userRoles = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -245,6 +249,36 @@ class User implements UserInterface
     {
         if ($this->userRoles->removeElement($userRole)) {
             $userRole->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Article>
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getAuthor() === $this) {
+                $article->setAuthor(null);
+            }
         }
 
         return $this;

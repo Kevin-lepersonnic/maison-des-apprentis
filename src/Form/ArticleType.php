@@ -27,10 +27,6 @@ class ArticleType extends AbstractType
                 'label' => "Contenu de l'article", 
                 "attr" => ["placeholder" => "Veuillez entrer votre contenu"]
             ])
-            ->add('author', TextType::class, [ 
-                'label' => "Auteur", 
-                "attr" => ["placeholder" => "Qui êtes vous ?"]
-            ])
             ->add('Envoyer', SubmitType::class)
         ;
     }

@@ -40,15 +40,15 @@ class Article
     private $creationDate;
 
     #[ORM\Column(type: 'string', length: 255)]
-    #[Assert\NotBlank(message:"Ce champs ne peut pas etre vide")]
-    private $author;
-
-    #[ORM\Column(type: 'string', length: 255)]
     private $slug;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     #[Assert\Url(message:"Ceci n'est pas un URL (lien d'une page web)")]
     private $image;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $author;
 
     public function getId(): ?int
     {
@@ -91,18 +91,6 @@ class Article
         return $this;
     }
 
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): self
-    {
-        $this->author = $author;
-
-        return $this;
-    }
-
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -141,6 +129,18 @@ class Article
         if (empty($this->creationDate)) {
            $this->creationDate = new \DateTime();
         }
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
     }
 
     
