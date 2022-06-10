@@ -23,20 +23,10 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
-        $faker = Faker\Factory::create('fr_FR');
-
-        // ----------------  Fixture pour Articles ---------------
-        for ($i=0; $i < 30 ; $i++) { 
-
-            $article = new Article();
-            $article->setTitle($faker->word($faker->randomDigit()));
-            $article->setImage("https://www.événementiel.net/wp-content/uploads/2014/02/default-placeholder.png");
-            $article->setContent('<p>'. implode('</p><p>', $faker->words(25)) .'</p>');
-         
-            $manager->persist($article);
-        }
+        $faker = Faker\Factory::create('fr_FR');        
 
         // ----------------   Fixture pour User ----------------
+        
         $users = [];
         $genres = ['male', 'female'];
 
@@ -155,8 +145,22 @@ class AppFixtures extends Fixture
                     ->addUserRole($adminRole);
         $manager->persist($adminUser5);
 
-        $manager->flush();
-    }
+        // ----------------  Fixture pour Articles ---------------
+        
+        for ($i=0; $i < 30 ; $i++) { 
 
-    
+            $article = new Article();
+            
+            $author = $users[mt_rand(0, count($users) -1)];
+
+            $article->setTitle($faker->word($faker->randomDigit()))
+                    ->setImage("https://www.événementiel.net/wp-content/uploads/2014/02/default-placeholder.png")
+                    ->setContent('<p>'. implode('</p><p>', $faker->words(25)) .'</p>')
+                    ->setAuthor($author);
+        
+            $manager->persist($article);
+        }
+
+         $manager->flush();
+    }
 }

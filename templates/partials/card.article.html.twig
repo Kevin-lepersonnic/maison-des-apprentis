@@ -6,7 +6,7 @@
           <p class="card-text">{{article.content | raw}}</p>
           <a href="{{path("article_show", {'slug':article.slug} ) }}" class="btn btn-primary rounded">Lire la suite</a>
           <div class="my-3">
-              <a href="#" class="card-link">{{article.author}}</a>
+              <a href="#" class="card-link">{{article.author.fullname}}</a>
           </div>
         </div>
         <div class="card-footer text-muted">

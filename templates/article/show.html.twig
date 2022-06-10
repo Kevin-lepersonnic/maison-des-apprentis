@@ -14,7 +14,7 @@
 		<p class="text-left h4">
 			Ecrit le :
 			{{article.creationDate | date('d/m/Y à H:i')}}, par
-			{{article.author}}
+			{{article.author.fullname}}
 		</p>
 
 		<img src="{{article.image}}" alt="photo de l'article {{article.title}}" width="450px">
@@ -26,20 +26,27 @@
 		</div>
 
 		<hr>
-		<div>
-			<a href="{{ path('article_edit' , {'slug': article.slug } ) }}" class="btn btn-info mx-2">
-				Modifier l'article
-				<i class="fa fa-pen"></i>
-			</a>
+		{# PENSER A RECUPERER LE IF QUI SUIT POUR LE TEMPLATE FINAL #}
 
-			<form class="d-inline" action="{{ path('article_delete' , {'slug': article.slug } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette article ?');">
-				<button class="btn btn-danger mx-2">
-					Supprimer l'article
-					<i class="fa fa-trash"></i>
-				</button>
-			</form>
-		</div>
+		{% if app.user and app.user == article.author %}
 
+			<div>
+				<a href="{{ path('article_edit' , {'slug': article.slug } ) }}" class="btn btn-info mx-2">
+					Modifier l'article
+					<i class="fa fa-pen"></i>
+				</a>
+
+				<form class="d-inline" action="{{ path('article_delete' , {'slug': article.slug } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette article ?');">
+					<button class="btn btn-danger mx-2">
+						Supprimer l'article
+						<i class="fa fa-trash"></i>
+					</button>
+				</form>
+			</div>
+
+		{% endif %}
+
+		
 		<div>
 			<p class="h3 text-center p-2 shadow">
 				Soyez le premier a commenter !

@@ -13,28 +13,31 @@
 					{{ user.email}}
 				</p>
 			</div>
-			<div>
-                <a href="{{ path('user_edit' , {'slug': user.slug } ) }}" class="btn btn-info mx-2">
-                    Modifier mon profil
-                    <i class="fa fa-pen"></i>
-                </a>
-            
-                <form class="d-inline" action="{{ path('user_delete' , {'slug': user.slug } ) }}" 
-					onsubmit="return confirm('Etes vous sur de vouloir supprimer cette article ?');">
-                    <button class="btn btn-danger mx-2">
-                            Supprimer mon profil
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </form>
-			</div>
-		</div>
 
-		{# <p class="my-2 border p-2">{{user.presentation}}</p> #}
+			{# PENSER A RECUPERER LE IF QUI SUIT POUR LE TEMPLATE FINAL #}
+			
+			{% if user is same as(app.user) %}
+				<div>
+					<a href="{{ path('user_edit' , {'slug': user.slug } ) }}" class="btn btn-info mx-2">
+						Modifier mon profil
+						<i class="fa fa-pen"></i>
+					</a>
+				
+					<form class="d-inline" action="{{ path('user_delete' , {'slug': user.slug } ) }}" 
+						onsubmit="return confirm('Etes vous sur de vouloir supprimer cette article ?');">
+						<button class="btn btn-danger mx-2">
+								Supprimer mon profil
+							<i class="fa fa-trash"></i>
+						</button>
+					</form>
+				</div>
+			{% endif %}
+		</div>
 
 		<img src="{{user.avatar}}" class="rounded-circle border border-info shadow" alt="photo de l'article {{user.firstname}}" width="450px">
 
 
-		{# {% if user.articles | length > 0 %}
+		{% if user.articles | length > 0 %}
 
 			<h2 class="my-5">Mes articles en lignes</h2>
 
@@ -64,7 +67,7 @@
 
 
 
-		{% endif %} #}
+		{% endif %}
 
 	</div>
 {% endblock %}
