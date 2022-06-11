@@ -35,24 +35,45 @@ la bonne idée de vouloir capitaliser des connaissances techniques acquises tout
 		</h3>
 		<p>Développons ensemble dans le respect du rythme de chacun. Et concentrons nos efforts sur
 notre projet commun.</p>
-		<div class="border">Partage</div>
-		<div class="border">Entraide</div>
-		<div class="border">Soutiens</div>
+<hr>
+<div class="row flex-lg-row flex-xl-row flex-column justify-content-around mt-5 text-dark">
+		<div class="border border-dark p-5 bg-light shadow">
+        <p>Partage</p>
+        <p>Un coin de partage</p>
+        </div>
+		<div class="border border-dark p-5 bg-primary shadow">
+        <p>Entraide</p>
+        <p>Un coin d'entraide</p>
+        </div>
+		<div class="border border-dark p-5 bg-warning shadow">
+        <p>Soutiens</p>
+        <p>Un coin d'entraide</p>
+        </div>
+</div>
     </div>
 
-        {% set name1 = {'name':'HTML/CSS', 'type': 'front' } %}
+
+        {% set name1 = {'name':'HTML/CSS', 'type': 'Front', 'img': asset('../../img/1.png') } %}
+        {% set name2 = {'name':'JavaScript', 'type': 'Front', 'img': asset('../../img/2.png') } %}
+        {% set name3 = {'name':'PHP', 'type': 'Back', 'img': asset('../../img/3.png') } %}
+    {% set name = [name1, name2, name3] %}
 
 
-<div class="card text-center shadow my-3">
+<div class="card text-center shadow my-3 bg-dark">
 
-    <div class="card-header bg-dark text-white">
+{% for item in name %}
+    
+<div class=" card row flex-lg-row flex-xl-row flex-column justify-content-around mt-5 text-dark bg-secondary">
         <h2 class="card-title">
-            {{name1.name}}
+            {{item.name}}
         </h2>
 		<h3>
-		{{name1.type}}
+		{{item.type}}
 		</h3>
+        <img src="{{ item.img }}" alt="">
     </div>
+    
+{% endfor %}
 
 </div>
 
