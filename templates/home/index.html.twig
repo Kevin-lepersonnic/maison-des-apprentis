@@ -36,7 +36,7 @@ la bonne idée de vouloir capitaliser des connaissances techniques acquises tout
 		<p>Développons ensemble dans le respect du rythme de chacun. Et concentrons nos efforts sur
 notre projet commun.</p>
 <hr>
-<div class="row flex-lg-row flex-xl-row flex-column justify-content-around mt-5 text-dark">
+<div class="row flex-lg-row flex-xl-row flex-column justify-content-around m-3 text-dark">
 		<div class="border border-dark p-5 bg-dark shadow">
         <p>Partage</p>
         <p>Un coin de partage</p>
@@ -53,27 +53,9 @@ notre projet commun.</p>
     </div>
 
 
-        {% set name1 = {'name':'HTML/CSS', 'type': 'Front', 'img': asset('../../img/1.png') } %}
-        {% set name2 = {'name':'JavaScript', 'type': 'Front', 'img': asset('../../img/2.png') } %}
-        {% set name3 = {'name':'PHP', 'type': 'Back', 'img': asset('../../img/3.png') } %}
-    {% set name = [name1, name2, name3] %}
 
-
-<div class="card text-center shadow my-3 bg-dark">
-
-{% for item in name %}
     
-<div class=" card row flex-lg-row flex-xl-row flex-column justify-content-around mt-5 text-dark bg-secondary">
-        <h2 class="card-title">
-            {{item.name}}
-        </h2>
-		<h3>
-		{{item.type}}
-		</h3>
-        <img src="{{ item.img }}" alt="">
-    </div>
-    
-{% endfor %}
+
 
 </div>
 

@@ -220,3 +220,6 @@ a[data-toggle="collapse"] {
   }
 
 
+.bg-black {
+  background: #1d1919 !important;
+}
