@@ -59,17 +59,12 @@
 
 body {
   font-family: "Poppins", Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   font-weight: normal;
   background: #fafafa;
   color: gray; }
 
-a {
-  -webkit-transition: .3s all ease;
-  -o-transition: .3s all ease;
-  transition: .3s all ease;
-  color: #f8b739; }
   a:hover, a:focus {
     text-decoration: none !important;
     outline: none !important;
@@ -222,4 +217,8 @@ a[data-toggle="collapse"] {
 
 .bg-black {
   background: #1d1919 !important;
+}
+
+.cardHome {
+  max-width: 16vw;
 }
