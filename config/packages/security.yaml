@@ -22,6 +22,8 @@ security:
             form_login:
                 login_path: account_login
                 check_path: account_login
+                default_target_path: app_home
+                always_use_default_target_path: true
             
             logout:
                 path: account_logout

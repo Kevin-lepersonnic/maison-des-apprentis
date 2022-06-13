@@ -72,3 +72,13 @@
 		</div>
 	</nav>
 </header>
+
+{% for label, messages in app.flashes %}
+	<div class="container text-center my-5">
+		{% for message in messages %}
+			<div class="alert alert-{{ label }}">
+				{{ message | raw }}
+			</div>
+		{% endfor %}
+	</div>
+{% endfor %}
