@@ -4,6 +4,9 @@
         <h5 class="card-header">{{article.category.name | title}}</h5>
         <img src="{{article.image}}" alt="photo de l'article {{article.title}}">
         <div class="card-body">
+            {% if article.supportFilename != NULL %}
+                <a href="{{ asset('uploads/supports/' ~ article.supportFilename) }}">Télécharger le document support</a>
+            {% endif %}
           <p class="card-text">{{article.content | raw}}</p>
           <a href="{{path("article_show", {'slug':article.slug} ) }}" class="btn btn-primary rounded">Lire la suite</a>
           <div class="my-3">

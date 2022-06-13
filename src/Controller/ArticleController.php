@@ -5,14 +5,17 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Service\FileUploader;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class ArticleController extends AbstractController
 {
@@ -25,7 +28,7 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/articles/new', name: 'article_create')]
-    public function create(Request $request, EntityManagerInterface $manager){
+    public function create(Request $request, EntityManagerInterface $manager, FileUploader $fileUploader){
 
         $article = new Article();
 
@@ -36,6 +39,12 @@ class ArticleController extends AbstractController
             if ( $form->isSubmitted() && $form->isValid() ) {
                 
                 $article->setAuthor($this->getUser());
+                $supportFile = $form->get('support')->getData();
+                if ($supportFile) {
+                    $supportFileName = $fileUploader->upload($supportFile);
+                    $article->setSupportFilename($supportFileName);
+                }
+
                 $manager->persist($article);
                 $manager->flush();
                 

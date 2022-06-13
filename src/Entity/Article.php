@@ -56,6 +56,9 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private $category;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $supportFilename;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -157,6 +160,18 @@ class Article
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSupportFilename(): ?string
+    {
+        return $this->supportFilename;
+    }
+
+    public function setSupportFilename(?string $supportFilename): self
+    {
+        $this->supportFilename = $supportFilename;
 
         return $this;
     }
