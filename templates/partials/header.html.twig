@@ -1,4 +1,6 @@
-{% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'admin', 'isConnected': true} %}
+{% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'user', 'isConnected': true} %}
+
+{% if user.isConnected %}
 
 
 <div class="wrapper d-flex align-items-stretch">
@@ -65,17 +67,19 @@
 
 	</div>
 </nav>
-
+{% endif %}
 <!-- Page Content  -->
 <div id="content">
 
 	<nav class="navbar navbar-expand-sm navbar-light bg-dark m-4">
 		<div class="container-fluid">
+{% if user.isConnected %}
 
 			<button type="button" id="sidebarCollapse" class="btn btn-dark">
 				<i class="fa fa-bars"></i>
 				<span class="sr-only">Toggle Menu</span>
 			</button>
+			{% endif %}
 			<button class="btn btn-dark d-inline-block d-sm-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fa-solid fa-user"></i>
 			</button>
