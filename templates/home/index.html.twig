@@ -10,63 +10,82 @@
 {% endblock %}
 {% block body %}
 
-	<div class="container text-white">
-		<div class="jumbotron my-5 text-center shadow bg-secondary">
-			<h1 class="display-3 text-danger">
-				Accueil
-			</h1>
-			<p class="lead text-white">Bienvenue sur MDA</p>
-			<hr class="my-4">
-			<h3>
-				Objectif :
+	<div class="d-flex flex-column text-white m-5 h-100 align-items-center justify-content-center">
+		<h1 class="m-3">Bienvenue sur LMDA</h1>
+		<h2>Une Plateforme de blibliothèque collaborative</h2>
 
-			</h3>
-			<p>
-				Présenter un site Internet d’échanges Forum d’entraides pour les débutants du métier du Développeur Web.
-												=> Construire une Plateforme de Bibliothèque collaborative par session d'apprenants.
-			</p>
-			<p>La Maison des Apprenants, un lieux d'entraide et de connaissance du code.</p>
-			<h3>Présentation :</h3>
-			<p>
-				Les apprenants des 4 coins de la France, se sont retrouvés autour un projet de soutenance et ont eu
-												la bonne idée de vouloir capitaliser des connaissances techniques acquises tout au long du parcours de formation afin de créer un lien d’échanges.
-			</p>
-			<h3>
-				Nos valeurs :
-			</h3>
-			<p>Développons ensemble dans le respect du rythme de chacun. Et concentrons nos efforts sur
-												notre projet commun.</p>
-			<hr>
-			<div class="row flex-lg-row flex-xl-row flex-column justify-content-around">
-				<div class="card bg-dark text-white cardHome">
-					<img src="{{asset('../../img/fond.png')}}" class="card-img" alt="...">
-					<div class="card-img-overlay ">
-						<h5 class="card-title text-white">Partage</h5>
-						<p class="card-text">Un coin de partage</p>
+
+		<button class="btn-register m-5">
+			<a class="text-white" href="">Rejoindre</a>
+		</button>
+
+		<div class="m-5 ">
+			<i class="fa-solid fa-circle-chevron-down fa-xl arrow"></i>
+		</div>
+
+	</div>
+	<div class="text-white text-center">
+
+		<h2 class="mb-3">Bibliothèque des techno</h2>
+		<div class="container mt-5">
+			<div class="row justify-content-around">
+				<div class="card bg-ligt text-dark" style="width: 18rem;">
+					<img src="{{asset('../../img/15.jpg')}}" class="card-img-top" alt="...">
+					<hr>
+					<div class="card-body">
+						<h5 class="card-title">HTML/CSS</h5>
+						<p class="card-text">Le HTML et CSS n'est pas un langage de programation mais plus un langage de structure.</p>
+					</div>
+
+					<div class="card-body">
+						<a href="#" class="card-link text-decoretion-none">Plus de détail</a>
+					</div>
+
+				</div>
+				<div class="card bg-ligt text-dark" style="width: 18rem;">
+					<img src="{{asset('../../img/2.png')}}" class="card-img-top" alt="...">
+					<hr>
+					<div class="card-body">
+						<h5 class="card-title">JavaScript</h5>
+						<p class="card-text">JavaScript (souvent abrégé en « JS ») est un langage de script léger, orienté objet, principalement connu comme le langage de script des pages web.</p>
+					</div>
+
+					<div class="card-body">
+						<a href="#" class="card-link">Plus de détail</a>
 					</div>
 				</div>
-				<div class="card bg-dark text-white cardHome">
-					<img src="{{asset('../../img/fond.png')}}" class="card-img" alt="...">
-					<div class="card-img-overlay ">
-						<h5 class="card-title text-white">Entraide</h5>
-						<p class="card-text">Un coin d'entraide</p>
+				<div class="card bg-ligt text-dark" style="width: 18rem;">
+					<img src="{{asset('../../img/3.png')}}" class="card-img-top" alt="...">
+					<hr>
+					<div class="card-body">
+						<h5 class="card-title">PHP</h5>
+						<p class="card-text">PHP (officiellement, ce sigle est un acronyme récursif pour PHP Hypertext Preprocessor) est un langage de scripts généraliste et Open Source, spécialement conçu pour le développement d'applications web.</p>
 					</div>
-				</div>
-				<div class="card bg-dark text-white cardHome">
-					<img src="{{asset('../../img/fond.png')}}" class="card-img" alt="...">
-					<div class="card-img-overlay ">
-						<h5 class="card-title text-white">Soutien</h5>
-						<p class="card-text">Un coin de soutien</p>
+
+					<div class="card-body">
+						<a href="#" class="card-link">Plus de détail</a>
 					</div>
 				</div>
 
 			</div>
-        <button class="mt-5 bg-info "><a class="text-decoration-none text-white" href="#">
-        Inscrivez-vous</a></button>
+</div>
+		</div>
+		<hr class="mb-5">
+
+
+{# Mettre des photo du site de article et autres #}
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-3">
+					<img class="img-thumbnail" src="{{asset('../../img/formation.png')}}" alt="">
+				</div>
+				<div class="col-3">
+					<img class="img-thumbnail" src="{{asset('../../img/symfony.png')}}" alt="">
+				</div>
+				<div class="col-3">
+					<img class="img-thumbnail" src="{{asset('../../img/angular.png')}}" alt="">
+				</div>
+			</div>
 		</div>
 
-
-
-	</div>
-
-{% endblock %}
+	{% endblock %}

@@ -1,4 +1,4 @@
-{% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'user', 'isConnected': true} %}
+{% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'user', 'isConnected': false} %}
 
 {% if user.isConnected %}
 
@@ -71,7 +71,7 @@
 <!-- Page Content  -->
 <div id="content">
 
-	<nav class="navbar navbar-expand-sm navbar-light bg-dark m-4">
+	<nav class="navbar navbar-expand-md navbar-light bg-dark m-4">
 		<div class="container-fluid">
 {% if user.isConnected %}
 
@@ -80,7 +80,7 @@
 				<span class="sr-only">Toggle Menu</span>
 			</button>
 			{% endif %}
-			<button class="btn btn-dark d-inline-block d-sm-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<button class="btn btn-dark d-inline-block d-md-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fa-solid fa-user"></i>
 			</button>
 
