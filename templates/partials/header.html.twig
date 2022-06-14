@@ -1,6 +1,4 @@
-{% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'user', 'isConnected': false} %}
-
-{% if user.isConnected %}
+{% if app.user %}
 
 
 <div class="wrapper d-flex align-items-stretch">
@@ -11,7 +9,7 @@
 			<a href="#"><img class="img logo rounded-circle mb-5" src="{{asset('../../img/guest5.jpg')}}" alt=""></a>
 			<ul class="list-unstyled components mb-5">
 				<li>
-					<a href="#">Home</a>
+					<a href="{{path('account_login')}}">Home</a>
 				</li>
 			</li>
 			<li>
@@ -73,7 +71,7 @@
 
 	<nav class="navbar navbar-expand-md navbar-light bg-dark m-4">
 		<div class="container-fluid">
-{% if user.isConnected %}
+{% if app.user %}
 
 			<button type="button" id="sidebarCollapse" class="btn btn-dark">
 				<i class="fa fa-bars"></i>
@@ -90,7 +88,7 @@
 						<a class="nav-link text-light" href="#">Home</a>
 					</li>
 
-					{% if user.isConnected %}
+					{% if app.user %}
 						<li class="nav-item">
 							<a class="nav-link text-light" href="#">Mon compte</a>
 						</li>
@@ -102,7 +100,7 @@
 							<a class="nav-link text-light" href="#">Inscription</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-light" href="#">Connexion</a>
+							<a class="nav-link text-light" href="{{path("account_login")}}">Connexion</a>
 						</li>
 					{% endif %}
 
