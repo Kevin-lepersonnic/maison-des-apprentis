@@ -21,14 +21,14 @@ class AccountController extends AbstractController
     {
         $error = $utils->getLastAuthenticationError();
         $username = $utils->getLastUsername();
-
         dump($error, $username);
 
         return $this->render('account/login.html.twig', [
             'hasError' => $error !==null,
-            'username' => $username
+            'username' => $username,
             
-        ]);
+            
+        ]);;
     }
 
     #[Route('/logout', name: 'account_logout')]
