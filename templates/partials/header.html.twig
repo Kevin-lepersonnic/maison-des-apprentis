@@ -1,84 +1,114 @@
-{% set user = {'firstname':'Kevin','lastname':'LP', 'role':'admin', 'isConnected':true } %}
+{% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'user', 'isConnected': false} %}
 
-<header>
-	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+{% if user.isConnected %}
 
-		<a class="navbar-brand" href="{{path("app_home")}}">
-			Maison Des Apprentis
-		</a>
 
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarColor01">
-			<ul class="navbar-nav mr-auto">
-
-				<li class="nav-item">
-					<a class="nav-link" href="{{path("app_home")}}">
-						<i class="fa fa-home"></i>
-						Accueil
-					</a>
+<div class="wrapper d-flex align-items-stretch">
+	<nav id="sidebar">
+		<div
+			class="p-4 pt-5">
+			<!-- photo de profile possibilité de faire un accès au profile en cliquant dessus -->
+			<a href="#"><img class="img logo rounded-circle mb-5" src="{{asset('../../img/guest5.jpg')}}" alt=""></a>
+			<ul class="list-unstyled components mb-5">
+				<li>
+					<a href="#">Home</a>
 				</li>
+			</li>
+			<li>
+				<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bibliothèque</a>
+				<ul class="collapse list-unstyled" id="homeSubmenu">
+					<li>
+						<a href="#">All</a>
+					</li>
+					<li>
+						<a href="#">HTML/CSS</a>
+					</li>
+					<li>
+						<a href="#">JavaScript</a>
+					</li>
+					<li>
+						<a href="#">PHP</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Calendrier</a>
+			</li>
+			<li>
+				<a href="#">Tableau de bord</a>
+			</li>
+			<li>
+				<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
+				<ul class="collapse list-unstyled" id="pageSubmenu">
+					<li>
+						<a href="#">All</a>
+					</li>
+					<li>
+						<a href="#">Subscribed</a>
+					</li>
+					<li>
+						<a href="#">Non-subscribed</a>
+					</li>
+					<li>
+						<a href="#">New</a>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Settings</a>
+			</li>
+			<li>
+				<a href="#">Profile</a>
+			</li>
+			<li>
+				<a href="#">Logout</a>
+			</li>
+		</ul>
 
-				<li class="nav-item">
-					<a class="nav-link" href="{{path("app_article")}}">
-						<i class="fa fa-newspaper"></i>
-						Articles
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{path("article_create")}}">
-						<i class="fa fa-pen"></i>
-								Ecrire un article
-						</a>
-				</li>
+	</div>
+</nav>
+{% endif %}
+<!-- Page Content  -->
+<div id="content">
 
-			</ul>
-			<ul class="navbar-nav ml-auto">
-			{% if user.isConnected %}
-			
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-						<i class="fa fa-user"></i>
-						{{ user.firstname | title  }} {{ user.lastname | upper }}
-					</a>
-					<div class="dropdown-menu dropdown-menu-right">
-						<a class="dropdown-item" href="#">Mon Profil</a>
-						<a class="dropdown-item" href="#">Mes articles</a>
-						{% if user.role == "admin" %}
-							<a class="dropdown-item" href="#">Espace Admin</a>
-						{% endif %}
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#">Déconnexion</a>
-					</div>
-				</li>
+	<nav class="navbar navbar-expand-sm navbar-light bg-dark m-4">
+		<div class="container-fluid">
+{% if user.isConnected %}
 
-				{% else %}
-
-				<li class="nav-item">
-					<a class="nav-link" href="#">
-						Connexion<i class="fa fa-user-plus"></i>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">
-						Inscription<i class="fa fa-sign-in-alt"></i>
-					</a>
-				</li>
-										
+			<button type="button" id="sidebarCollapse" class="btn btn-dark">
+				<i class="fa fa-bars"></i>
+				<span class="sr-only">Toggle Menu</span>
+			</button>
 			{% endif %}
-			</ul>
+			<button class="btn btn-dark d-inline-block d-sm-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fa-solid fa-user"></i>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="nav navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link text-light" href="#">Home</a>
+					</li>
+
+					{% if user.isConnected %}
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#">Mon compte</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#">Logout</a>
+						</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#">Inscription</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-light" href="#">Connexion</a>
+						</li>
+					{% endif %}
+
+
+				</ul>
+			</div>
 		</div>
 	</nav>
-</header>
 
-{% for label, messages in app.flashes %}
-	<div class="container text-center my-5">
-		{% for message in messages %}
-			<div class="alert alert-{{ label }}">
-				{{ message | raw }}
-			</div>
-		{% endfor %}
-	</div>
-{% endfor %}
