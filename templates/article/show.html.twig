@@ -20,6 +20,9 @@
 		<img src="{{article.image}}" alt="photo de l'article {{article.title}}" width="450px">
 
 		<div class="my-5 shadow  border p-5">
+			{% if article.supportFilename != NULL %}
+                <a href="{{ asset('uploads/supports/' ~ article.supportFilename) }}">Télécharger le document support</a>
+            {% endif %}
 			<hr>
 			{{article.content | raw}}
 			<hr>
