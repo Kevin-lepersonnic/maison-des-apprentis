@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Erreur 404{% endblock %}
+{% block title %}Erreur 403{% endblock %}
 
 {% block body %}
     <div class="row flex-wrap text-center align-items-center">
@@ -8,8 +8,10 @@
             <img height="400px" width="auto" src="{{asset('img/chuck-norris-error.jpg')}}" alt="Chuck Norris">
         </div>
 		<div class="col-lg-6">
-			<h1><b>Erreur 404</b></h1>
-			<p>Il semblerait que cette page n'existe pas et que Chuck Norris ai décidé de monter la garde.</p>
+			<h1><b>Erreur 403</b></h1>
+			<p>A priori vous n'avez pas la permission de faire ça !</p>
+            <p>Walker Texas Ranger veille au grain, pas de ça chez nous !</p>
+            <p>A tout moment il peut dégainer un coup de pied retourné</p>
 			<p>Si j'étais vous, je ferai machine arrière...</p>
 			<button>
 				<a href="{{path("app_home")}}">Retour à l'accueil</a>
@@ -18,3 +20,6 @@
 	</div>
 
 {% endblock %}
+
+
+
