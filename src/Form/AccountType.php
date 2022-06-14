@@ -38,7 +38,7 @@ class AccountType extends AbstractType
             ])
             ->add('avatar', TextType::class, [
                 'label'=> "Lien de votre image",
-                "attr" => ['placeholder'=>'Coller un lien d\'image'],
+                "attr" => ['placeholder'=>'Coller un lien d\'image pour votre Avatar'],
             ])
             ->add('Envoyer', SubmitType::class)
         ;

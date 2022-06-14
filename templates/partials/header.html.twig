@@ -1,6 +1,6 @@
-{% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'user', 'isConnected': false} %}
+{# {% set user = {'firstName': 'Marco', 'lastName': 'Polo', 'role': 'user', 'isConnected': false} %} #}
 
-{% if user.isConnected %}
+{% if app.user %}
 
 
 <div class="wrapper d-flex align-items-stretch">
@@ -8,10 +8,10 @@
 		<div
 			class="p-4 pt-5">
 			<!-- photo de profile possibilité de faire un accès au profile en cliquant dessus -->
-			<a href="#"><img class="img logo rounded-circle mb-5" src="{{asset('../../img/guest5.jpg')}}" alt=""></a>
+			<a href="#"><img class="img logo rounded-circle mb-5" src="{{app.user.avatar}}" alt=""></a>
 			<ul class="list-unstyled components mb-5">
 				<li>
-					<a href="#">Home</a>
+					<a href="{{path("app_home")}}">Home</a>
 				</li>
 			</li>
 			<li>
@@ -58,10 +58,10 @@
 				<a href="#">Settings</a>
 			</li>
 			<li>
-				<a href="#">Profile</a>
+				<a href="{{ path('user_show' , {'slug': app.user.slug } ) }}">Profile</a>
 			</li>
 			<li>
-				<a href="#">Logout</a>
+				<a href="{{path("account_logout")}}">Logout</a>
 			</li>
 		</ul>
 
@@ -73,7 +73,7 @@
 
 	<nav class="navbar navbar-expand-md navbar-light bg-dark m-4 ">
 		<div class="container-fluid">
-{% if user.isConnected %}
+{% if app.user %}
 
 			<button type="button" id="sidebarCollapse" class="btn btn-dark">
 				<i class="fa fa-bars"></i>
@@ -87,22 +87,22 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="nav navbar-nav ml-auto">
 					<li class="nav-item active">
-						<a class="nav-link text-light" href="#">Home</a>
+						<a class="nav-link text-light" href="{{path("app_home")}}">Home</a>
 					</li>
 
-					{% if user.isConnected %}
+					{% if app.user %}
 						<li class="nav-item">
-							<a class="nav-link text-light" href="#">Mon compte</a>
+							<a class="nav-link text-light" href="{{ path('user_show' , {'slug': app.user.slug } ) }}">Mon compte</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-light" href="#">Logout</a>
+							<a class="nav-link text-light" href="{{path("account_logout")}}">Logout</a>
 						</li>
 					{% else %}
 						<li class="nav-item">
-							<a class="nav-link text-light" href="#">Inscription</a>
+							<a class="nav-link text-light" href="{{path("user_create")}}">Inscription</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-light" href="#">Connexion</a>
+							<a class="nav-link text-light" href="{{path("account_login")}}">Connexion</a>
 						</li>
 					{% endif %}
 
