@@ -11,12 +11,17 @@
 			<a href="#"><img class="img logo rounded-circle mb-5" src="{{app.user.avatar}}" alt=""></a>
 			<ul class="list-unstyled components mb-5">
 				<li>
-					<a href="{{path("app_home")}}">Home</a>
+					<a href="{{path("app_home")}}">Accueil</a>
 				</li>
 			</li>
 			<li>
 				<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bibliothèque</a>
 				<ul class="collapse list-unstyled" id="homeSubmenu">
+					{# {% for categorie in categories %}
+					<li>
+						<a href="#">{{categorie.name}}</a>
+					</li>
+					{% endfor %} #}
 					<li>
 						<a href="#">All</a>
 					</li>
@@ -34,29 +39,28 @@
 			<li>
 				<a href="#">Calendrier</a>
 			</li>
-			<li>
+			{# <li>
 				<a href="#">Tableau de bord</a>
-			</li>
+			</li> #}
+
+			
 			<li>
-				<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Users</a>
+				<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tableau de bord</a>
 				<ul class="collapse list-unstyled" id="pageSubmenu">
 					<li>
-						<a href="#">All</a>
+						<a href="{{path("app_account")}}">Utilisateurs</a>
 					</li>
 					<li>
-						<a href="#">Subscribed</a>
+						<a href="{{path("app_article")}}">Articles</a>
 					</li>
 					<li>
-						<a href="#">Non-subscribed</a>
-					</li>
-					<li>
-						<a href="#">New</a>
+						<a href="{{path("app_category_index")}}">Catégories</a>
 					</li>
 				</ul>
 			</li>
-			<li>
+			{# <li>
 				<a href="#">Settings</a>
-			</li>
+			</li> #}
 			<li>
 				<a href="{{ path('user_show' , {'slug': app.user.slug } ) }}">Mon compte</a>
 			</li>
@@ -86,12 +90,12 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="nav navbar-nav ml-auto">
-					<li class="nav-item active">
-						{# <a class="nav-link text-light" href="{{path("app_home")}}">Home</a> #}
-						<p class="text-white pt-2">Bienvenue {{app.user.fullname}} | </p>
-					</li>
 
 					{% if app.user %}
+						<li class="nav-item active">
+							{# <a class="nav-link text-light" href="{{path("app_home")}}">Home</a> #}
+							<p class="text-white pt-2">Bienvenue {{app.user.firstname}} | </p>
+						</li>
 						<li class="nav-item">
 							<a class="nav-link text-light" href="{{ path('user_show' , {'slug': app.user.slug } ) }}">Mon compte</a>
 						</li>
