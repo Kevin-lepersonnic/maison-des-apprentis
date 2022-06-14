@@ -3,9 +3,21 @@
 {% block title %}Créer un compte{% endblock %}
 
 {% block body %}
-    <p class="my-5 display-4">Créer un compte</p>
+    {# <p class="my-5 display-4">Créer un compte</p> #}
 
-<div class="col-8 m-auto">
+{# <div class="col-8 m-auto">
     {{form(form)}}
+</div> #}
+<div class="page-content">
+    <div class="form-v6-content">
+        <div class="form-left">
+            <img height="752px" width="auto" src="{{asset('img/karsten.jpg')}}" >
+        </div>
+        <div class="form-detail" >
+            <h2>Créer un compte</h2>
+            <div>{{form(form)}}</div>
+        </div>
+    </div>
 </div>
+
 {% endblock %}
