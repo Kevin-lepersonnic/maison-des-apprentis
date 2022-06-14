@@ -3,11 +3,12 @@
 {% block title %}MConnexion{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1 class="my-5 text-center">Connectez-vous</h1>
-    </div>
 
-    {% if hasError %}
+<div class="page-content">
+    <div class="form-v6-content">
+        <div class="form-detail" >
+            <h2>Connectez-vous</h2>
+            {% if hasError %}
         <div class="col-4 alert alert-danger m-auto">
         Email ou mot de passe invalide
         </div>
@@ -26,4 +27,9 @@
             <button type="submit" class="btn btn-success">Connexion</button>
         </div>
     </form>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}
