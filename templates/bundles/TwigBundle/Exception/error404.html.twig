@@ -1,26 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Error 404{% endblock %}
+{% block title %}Erreur 404{% endblock %}
 
 {% block body %}
-    <div id="page-top">
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-        <!-- 404 Error Text -->
-            <div class="text-center">
-                <div class="error mx-auto" data-text="404">404</div>
-                <p class="lead text-gray-800 mb-5">Page Not Found</p>
-                <p class="text-gray-500 mb-0">It looks like you found a glitch in the matrix...</p>
-                <a href="index.html">&larr; Back to Dashboard</a>
-                <div>
-                    <img width="200px" height="auto" src="https://c.tenor.com/tw1ePQYC3rUAAAAC/angry-screaming-angry.gif" alt="">
-                </div>
-            </div>
-           
+    <div class="row flex-wrap text-center align-items-center">
+		<div class="col-lg-6">
+            <img height="400px" width="auto" src="{{asset('img/chuck-norris-error.jpg')}}" alt="Chuck Norris">
         </div>
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-    </div>
+		<div class="col-lg-6">
+			<h1><b>Erreur 404</b></h1>
+			<p>Il semblerait que cette page n'existe pas et que Chuck Norris ai décidé de monter la garde.</p>
+			<p>Si j'étais vous, je ferai machine arrière...</p>
+			<button>
+				<a href="{{path("app_home")}}">Retour à l'accueil</a>
+			</button>
+		</div>
+	</div>
+
 {% endblock %}
