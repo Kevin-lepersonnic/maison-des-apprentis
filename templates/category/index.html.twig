@@ -1,37 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Page des catégories{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+<div class="">
+<div class="row justify-content-center">
+		{% for category in categories %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+			{% include "partials/card.category.html.twig"  %}
 
-    <a href="{{ path('app_category_new') }}">Create new</a>
-
+		{% endfor %}
+</div>
+	</div>
+   
 {% endblock %}
 {% block footer %}{% endblock %}

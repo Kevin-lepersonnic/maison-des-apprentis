@@ -59,6 +59,7 @@ class Article
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $supportFilename;
 
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -175,6 +176,7 @@ class Article
 
         return $this;
     }
+
 
     
 }
