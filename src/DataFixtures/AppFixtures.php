@@ -150,16 +150,57 @@ class AppFixtures extends Fixture
 
         $categories=[];
 
-        for ($i=0; $i < 10 ; $i++) { 
+        for ($i=0; $i < 1 ; $i++) { 
 
-            $category = new Category();
-            $category   ->setName($faker->word($faker->randomDigit()))
-                        ->setImage("https://picsum.photos/200/300");
-         
-            $manager->persist($category);
-            $categories[] = $category;
+                $angularCat = new Category();
+                $angularCat->setname('Angular')
+                                ->setimage('../img/angular-logo.png')
+                                ->setdescription('framework Front-end');
+                $manager->persist($angularCat);
+            $categories[] = $angularCat;
         }
 
+        $htmlCat = new Category();
+        $htmlCat->setname('HTML')
+                    ->setimage('../img/html-1.png')
+                    ->setdescription('Langage de balisage');
+        $manager->persist($htmlCat);
+
+        $cssCat = new Category();
+        $cssCat->setname('CSS')
+                    ->setimage('../img/css-3.png')
+                    ->setdescription('Langage de style');
+        $manager->persist($cssCat);
+
+        $symfonyCat = new Category();
+        $symfonyCat->setname('Symfony')
+                    ->setimage('../img/symfony-5.png')
+                    ->setdescription('Framework back-end');
+        $manager->persist($symfonyCat);
+
+        $phpCat = new Category();
+        $phpCat->setname('PHP')
+                    ->setimage('../img/3.png')
+                    ->setdescription('Langage back-end');
+        $manager->persist($phpCat);
+
+        $jsCat = new Category();
+        $jsCat->setname('JavaScript')
+                    ->setimage('../img/javascript-1.png')
+                    ->setdescription('Langage Front-end');
+        $manager->persist($jsCat);
+
+        $bootstrapCat = new Category();
+        $bootstrapCat->setname('Bootstrap')
+                    ->setimage('../img/4.png')
+                    ->setdescription('Bibliothèque de style');
+        $manager->persist($bootstrapCat);
+
+        $wpCat = new Category();
+        $wpCat->setname('Wordpress')
+                    ->setimage('../img/wp.png')
+                    ->setdescription('Un CMS au top');
+        $manager->persist($wpCat);
 
         // ----------------  Fixture pour Articles ---------------
         
