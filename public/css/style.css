@@ -250,12 +250,15 @@ background-size: cover;
   100% { transform: translateY(-10px); }
 }
 
-@media screen and (max-width : 1000px) {
+@media screen and (max-width : 600px) {
   .logo {
     order: 0 !important;
   }
   .navlat {
-    order: 1 !important;
+    order: 1 ;
+  }
+  .navlog{
+    order: 2;
   }
 
 }

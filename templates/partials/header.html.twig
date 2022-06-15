@@ -6,7 +6,7 @@
 <div class="wrapper d-flex align-items-stretch">
 	<nav id="sidebar">
 		<div
-			class="p-4 pt-5">
+			class="p-4 pt-5 active">
 			<!-- photo de profile possibilité de faire un accès au profile en cliquant dessus -->
 			<a href="#"><img class="img logo rounded-circle mb-5" src="{{app.user.avatar}}" alt=""></a>
 			<ul class="list-unstyled components mb-5">
@@ -79,16 +79,16 @@
 		<div class="container-fluid">
 {% if app.user %}
 
-			<button type="button navlat" id="sidebarCollapse" class="btn btn-dark">
+			<button type="button" id="sidebarCollapse" class="btn btn-dark navlat">
 				<i class="fa fa-bars"></i>
 				<span class="sr-only">Toggle Menu</span>
 			</button>
 			{% endif %}
-			<div class="mx-3">
+			<div class="logo mx-3">
 			<img src="{{asset('../img/logo complet.svg')}}" width ="250" alt="logo">
 			</div>
-			<button class="navlog btn btn-dark d-inline-block d-md-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fa fa-bars"></i>
+			<button class="btn btn-dark d-inline-block d-md-none ml-auto navlog" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-user"></i>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
