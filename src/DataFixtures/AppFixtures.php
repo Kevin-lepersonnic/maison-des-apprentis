@@ -148,17 +148,12 @@ class AppFixtures extends Fixture
 
         // --------------- Fixture Category ----------------------
 
-        $categories=[];
-
-        for ($i=0; $i < 1 ; $i++) { 
-
-                $angularCat = new Category();
-                $angularCat->setname('Angular')
-                                ->setimage('../img/angular-logo.png')
-                                ->setdescription('framework Front-end');
-                $manager->persist($angularCat);
-            $categories[] = $angularCat;
-        }
+        $angularCat = new Category();
+        $angularCat->setname('Angular')
+                        ->setimage('../img/angular-logo.png')
+                        ->setdescription('framework Front-end');
+        $manager->persist($angularCat);
+        
 
         $htmlCat = new Category();
         $htmlCat->setname('HTML')
@@ -201,7 +196,9 @@ class AppFixtures extends Fixture
                     ->setimage('../img/wp.png')
                     ->setdescription('Un CMS au top');
         $manager->persist($wpCat);
-
+        
+        $categories=[$angularCat, $htmlCat, $cssCat, $symfonyCat, $phpCat, $jsCat, $bootstrapCat, $wpCat];
+        
         // ----------------  Fixture pour Articles ---------------
         
         for ($i=0; $i < 30 ; $i++) { 

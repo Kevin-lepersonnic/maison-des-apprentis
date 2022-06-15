@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\AccountType;
 use App\Repository\UserRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,10 +40,11 @@ class AccountController extends AbstractController
 
     #[Route('/account', name: 'app_account')]
     #[IsGranted('ROLE_ADMIN')]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('account/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
