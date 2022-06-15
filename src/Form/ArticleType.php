@@ -26,7 +26,7 @@ class ArticleType extends AbstractType
                 "attr" => ["placeholder" => "votre titre ici"]
             ])
             ->add('image', UrlType::class, [ 
-                'label' => "Image", 
+                'label' => "Image de l'article", 
                 "attr" => ["placeholder" => "Veuillez mettre le lien de l'image ici"]
             ])
             ->add('content', CKEditorType::class, [ 
@@ -36,6 +36,7 @@ class ArticleType extends AbstractType
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
+                'label' => 'Catégorie de l\'article',
             ])
             ->add('support', FileType::class, [
                 'label' => 'Document support (PDF, JPG, JPEG, PNG)',

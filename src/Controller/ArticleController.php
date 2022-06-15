@@ -40,7 +40,7 @@ class ArticleController extends AbstractController
     // }
 
     #[Route('/articles/new', name: 'article_create')]
-    public function create(Request $request, EntityManagerInterface $manager, FileUploader $fileUploader){
+    public function create(Request $request, EntityManagerInterface $manager, FileUploader $fileUploader, CategoryRepository $categoryRepository){
 
         $article = new Article();
 
@@ -62,11 +62,14 @@ class ArticleController extends AbstractController
                 
                 $this->addFlash("success", "L'article <strong>{$article->getTitle()}</strong> a bien été crée");
 
-                return $this->redirectToRoute('article_show', ['slug' => $article->getSlug() ]);
+                return $this->redirectToRoute('article_show', [
+                    'slug' => $article->getSlug(),
+                 ]);
             }
 
         return $this->render('article/create.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
@@ -81,7 +84,7 @@ class ArticleController extends AbstractController
 
     #[Route('/articles/{slug}/edit', name: 'article_edit')]
     #[Security("is_granted('ROLE_ADMIN') || is_granted('ROLE_USER') and user === article.getAuthor()")]
-    public function edit(Request $request, Article $article, EntityManagerInterface $manager)
+    public function edit(Request $request, Article $article, EntityManagerInterface $manager, CategoryRepository $categoryRepository)
     {
         $form = $this->createForm(ArticleType::class, $article);
 
@@ -101,7 +104,8 @@ class ArticleController extends AbstractController
 
         return $this->render('article/edit.html.twig', [
             'article' => $article,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
