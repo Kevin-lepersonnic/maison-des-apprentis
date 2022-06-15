@@ -229,6 +229,18 @@ a[data-toggle="collapse"] {
   min-height: 92vh;
 }
 
+.bgimg {
+background:  linear-gradient( hsla(0,0%,0%,0.5),hsla(0,0%,0%,0.5)),url("/img/banner.png");
+min-height: 40vh;
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.tester {
+  min-height: 100vh;
+
+}
+
 /* Animation de la fleche homepage */
 .arrow {
   -webkit-animation: mover 1s infinite  alternate;

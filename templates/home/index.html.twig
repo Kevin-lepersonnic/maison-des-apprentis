@@ -2,10 +2,13 @@
 
 {% block title %}Hello HomeController!
 {% endblock %}
-
+{% block imgfond %}{% endblock %}
 {% block body %}
 
-	<div class="d-flex flex-column text-white m-5 h-100 align-items-center justify-content-center">
+
+	<div class="bgimg">
+
+	<div class="d-flex flex-column text-white h-100 align-items-center justify-content-center">
 		<h1 class="m-3">Bienvenue sur LMDA</h1>
 		<h2>Une Plateforme de blibliothèque collaborative</h2>
 
@@ -17,6 +20,7 @@
 		<div class="m-5 ">
 			<i class="fa-solid fa-circle-chevron-down fa-xl arrow"></i>
 		</div>
+    </div>
 
 	</div>
 	<div class="text-white text-center">
@@ -63,24 +67,25 @@
 				</div>
 
 			</div>
-</div>
 		</div>
-		<hr class="mb-5">
+	</div>
+	<hr
+	class="mb-5">
 
 
-{# Mettre des photo du site de article et autres #}
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-3">
-					<img class="img-thumbnail" src="{{asset('../../img/formation.png')}}" alt="">
-				</div>
-				<div class="col-3">
-					<img class="img-thumbnail" src="{{asset('../../img/symfony.png')}}" alt="">
-				</div>
-				<div class="col-3">
-					<img class="img-thumbnail" src="{{asset('../../img/angular.png')}}" alt="">
-				</div>
+	{# Mettre des photo du site de article et autres #}
+	<div class="container">
+		<div class="row justify-content-between">
+			<div class="col-3">
+				<img class="img-thumbnail" src="{{asset('../../img/formation.png')}}" alt="">
+			</div>
+			<div class="col-3">
+				<img class="img-thumbnail" src="{{asset('../../img/symfony.png')}}" alt="">
+			</div>
+			<div class="col-3">
+				<img class="img-thumbnail" src="{{asset('../../img/angular.png')}}" alt="">
 			</div>
 		</div>
+	</div>
 
-	{% endblock %}
+{% endblock %}
