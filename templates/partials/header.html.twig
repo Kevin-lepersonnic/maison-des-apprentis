@@ -79,12 +79,15 @@
 		<div class="container-fluid">
 {% if app.user %}
 
-			<button type="button" id="sidebarCollapse" class="btn btn-dark">
+			<button type="button navlat" id="sidebarCollapse" class="btn btn-dark">
 				<i class="fa fa-bars"></i>
 				<span class="sr-only">Toggle Menu</span>
 			</button>
 			{% endif %}
-			<button class="btn btn-dark d-inline-block d-md-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<div class="mx-3">
+			<img src="{{asset('../img/logo complet.svg')}}" width ="250" alt="logo">
+			</div>
+			<button class="navlog btn btn-dark d-inline-block d-md-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fa fa-bars"></i>
 			</button>
 

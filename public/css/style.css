@@ -229,6 +229,8 @@ a[data-toggle="collapse"] {
   min-height: 92vh;
 }
 
+
+/* CSS image de fond page index */
 .bgimg {
 background:  linear-gradient( hsla(0,0%,0%,0.5),hsla(0,0%,0%,0.5)),url("/img/banner.png");
 min-height: 40vh;
@@ -236,10 +238,6 @@ background-repeat: no-repeat;
 background-size: cover;
 }
 
-.tester {
-  min-height: 100vh;
-
-}
 
 /* Animation de la fleche homepage */
 .arrow {
@@ -250,4 +248,14 @@ background-size: cover;
 @-webkit-keyframes mover {
   0% { transform: translateY(0); }
   100% { transform: translateY(-10px); }
+}
+
+@media screen and (max-width : 1000px) {
+  .logo {
+    order: 0 !important;
+  }
+  .navlat {
+    order: 1 !important;
+  }
+
 }
