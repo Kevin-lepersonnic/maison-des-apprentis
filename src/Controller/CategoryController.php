@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Article;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +21,15 @@ class CategoryController extends AbstractController
             'categories' => $categoryRepository->findAll(),
         ]);
     }
+
+    #[Route('/admin', name: 'app_category_admin', methods: ['GET'])]
+    public function admin(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('category/admin.html.twig', [
+             'categories' => $categoryRepository->findAll(),
+         ]);
+    }
+    
 
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CategoryRepository $categoryRepository): Response
