@@ -114,11 +114,12 @@ class AccountController extends AbstractController
     }
 
     #[Route('/account/{slug}', name: 'user_show')]
-    public function show($slug, UserRepository $userRepository)
+    public function show($slug, UserRepository $userRepository, CategoryRepository $categoryRepository)
     {        
         $user = $userRepository->findOneBySlug($slug);
         return $this->render('account/show.html.twig', [
-            'user' => $user,
+            'user' => $user,            
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
