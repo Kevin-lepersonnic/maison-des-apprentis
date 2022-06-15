@@ -16,6 +16,9 @@
 			<li>
 				<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bibliothèque</a>
 				<ul class="collapse list-unstyled" id="homeSubmenu">
+					<li>
+						<a href="{{path("app_article")}}">Tous les articles</a>
+					</li>
 					{% for category in categories %}
 					<li>
 						<a href="#">{{category.name}}</a>

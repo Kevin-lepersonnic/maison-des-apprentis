@@ -75,7 +75,7 @@ class AccountController extends AbstractController
 
     
     #[Route('/account/{slug}/edit', name: 'user_edit')]
-    public function edit(Request $request, User $user, EntityManagerInterface $manager, UserPasswordHasherInterface $encoder)
+    public function edit(Request $request, User $user, EntityManagerInterface $manager, UserPasswordHasherInterface $encoder, CategoryRepository $categoryRepository)
     {
         $form = $this->createForm(AccountType::class, $user);
         $form->handleRequest($request);
@@ -95,7 +95,8 @@ class AccountController extends AbstractController
 
         return $this->render('account/edit.html.twig', [
             'user' => $user,
-            'form'=> $form->createView()
+            'form'=> $form->createView(),
+            'categories' => $categoryRepository->findAll(),
         ]);
 
     }
