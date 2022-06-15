@@ -16,23 +16,11 @@
 			<li>
 				<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bibliothèque</a>
 				<ul class="collapse list-unstyled" id="homeSubmenu">
-					{# {% for categorie in categories %}
+					{% for category in categories %}
 					<li>
-						<a href="#">{{categorie.name}}</a>
+						<a href="#">{{category.name}}</a>
 					</li>
-					{% endfor %} #}
-					<li>
-						<a href="#">All</a>
-					</li>
-					<li>
-						<a href="#">HTML/CSS</a>
-					</li>
-					<li>
-						<a href="#">JavaScript</a>
-					</li>
-					<li>
-						<a href="#">PHP</a>
-					</li>
+					{% endfor %}
 				</ul>
 			</li>
 			<li>
