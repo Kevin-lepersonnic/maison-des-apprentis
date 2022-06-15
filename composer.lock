@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "70e26fbfe2139e627b4ed4123f387a7b",
+    "content-hash": "e5c7121c351aaee46ab844048588cf5f",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1601,16 +1601,16 @@
         },
         {
             "name": "friendsofsymfony/ckeditor-bundle",
-            "version": "2.4.0",
+            "version": "2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle.git",
-                "reference": "a4df4056b2832881e17b939e83f25406a6cc6414"
+                "reference": "8ac8ff579db688c5166b4babd5c301f4b24020f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSCKEditorBundle/zipball/a4df4056b2832881e17b939e83f25406a6cc6414",
-                "reference": "a4df4056b2832881e17b939e83f25406a6cc6414",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSCKEditorBundle/zipball/8ac8ff579db688c5166b4babd5c301f4b24020f5",
+                "reference": "8ac8ff579db688c5166b4babd5c301f4b24020f5",
                 "shasum": ""
             },
             "require": {
@@ -1645,6 +1645,7 @@
             "suggest": {
                 "egeloen/form-extra-bundle": "Allows to load CKEditor asynchronously"
             },
+            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -1676,9 +1677,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/issues",
-                "source": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/tree/2.4.0"
+                "source": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/tree/2.x"
             },
-            "time": "2022-01-07T12:34:18+00:00"
+            "time": "2022-01-21T08:38:00+00:00"
         },
         {
             "name": "laminas/laminas-code",
@@ -10616,7 +10617,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "friendsofsymfony/ckeditor-bundle": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
