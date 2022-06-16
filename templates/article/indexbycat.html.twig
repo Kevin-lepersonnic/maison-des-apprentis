@@ -3,7 +3,7 @@
 {% block title %}Page des articles{% endblock %}
 
 {% block body %}
-	<h1> {{categorie.name}} </h1>
+	<img src=" {{categorie.banniere}} " width="auto" max-height="200px" style="margin-top:-30px;" alt="">
 	<div class=" row justify-content-center">
 
 		{% for article in articles %}
@@ -15,3 +15,5 @@
 	</div>
 	
 {% endblock %}
+
+{% block footer %}{% endblock %}

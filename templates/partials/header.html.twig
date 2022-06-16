@@ -21,7 +21,7 @@
 					</li>
 					{% for category in categories %}
 					<li>
-						<a href="#">{{category.name}}</a>
+						<a href="{{path('app_article_cat', {'id': category.id})}}">{{category.name}}</a>
 					</li>
 					{% endfor %}
 				</ul>
