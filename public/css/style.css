@@ -229,14 +229,179 @@ a[data-toggle="collapse"] {
   min-height: 92vh;
 }
 
+/**************************************************ANTHO  carousel */
 
-/* CSS image de fond page index */
-.bgimg {
-background:  linear-gradient( hsla(0,0%,0%,0.5),hsla(0,0%,0%,0.5)),url("/img/banner.png");
-min-height: 40vh;
-background-repeat: no-repeat;
-background-size: cover;
+/* #customCarousel .carousel-indicators li {
+  box-sizing: content-box;
+ -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 30px;
+  height: 3px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer; 
+  background-color: blue;
+  background-clip: padding-box;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  opacity: .5;
+  transition: opacity .6s ease;
 }
+#customCarousel .carousel-control-next, .carousel-control-prev {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 15%;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  background: 0 0;
+  border: 0;
+  opacity: .5;
+  transition: opacity .15s ease;
+}
+
+#customCarousel .carouselImg img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+
+#customCarousel .carousel-caption {
+  background-color: rgb(104, 104, 104);
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  bottom: 10%;
+  left: 40%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#customCarousel .carouselimg{
+  height: 500px;
+}
+
+#customCarousel .slide1 {
+left: 500px;
+top: 50px;
+bottom: 300px;
+}
+#customCarousel .slide2 {
+left: 15px;
+}
+#customCarousel .slide3 {
+left: 15px;
+}
+#customCarousel .slide4 {
+left: 15px;
+} */
+
+/***********************************NICO */
+
+#customCarousel .carouselImg {
+  width: 60%;
+  height: 500px;
+}
+#customCarousel .carouselImg img {
+  width: 100%;
+  height: 80%;
+  
+  object-fit: cover;
+  padding: 16px;
+  background-color: #fff;
+}
+
+#customCarousel .carousel-caption {
+  background-color: #F5F5F5;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  bottom: 10%;
+  left: 50%;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #333;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: initial;
+ 
+}
+#customCarousel .carousel-indicators li {
+  box-sizing: content-box;
+-ms-flex: 0 1 auto;
+flex: 0 1 auto;
+width: 30px;
+height: 3px;
+margin-right: 3px;
+margin-left: 3px;
+text-indent: -999px;
+cursor: pointer;
+  background-color: var(--primary);
+  /* background-clip: padding-box;
+border-top: 10px solid transparent;
+border-bottom: 10px solid transparent;
+opacity: .5;
+transition: opacity .6s ease; */
+}
+#customCarousel .carousel-caption h5{
+  font-size: 20px;
+  font-size: max(20px,2vw);
+
+}
+#customCarousel .carousel-caption p{
+  font-size: 16px;
+  font-size: max(16px,1.5vw);
+
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  position: absolute;
+top: 0;
+bottom: 0;
+z-index: 1;
+display: -ms-flexbox;
+display: flex;
+-ms-flex-align: center;
+align-items: center;
+-ms-flex-pack: center;
+justify-content: center;
+width: 15%;
+padding: 0;
+  color: blue;
+text-align: center;
+background: 0 0;
+border: 0;
+opacity: .5;
+transition: opacity .15s ease;
+}
+
+#customCarousel .carousel-caption, #customCarousel .carouselImg img {
+  box-shadow: 0 0 25px rgba(0,0,0,0.2);
+}
+
+/* CSS image de fond page index directement dans html suite a problème depuis feuille css */
+
 
 
 /* Animation de la fleche homepage */
