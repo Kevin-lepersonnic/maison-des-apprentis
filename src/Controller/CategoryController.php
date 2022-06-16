@@ -45,16 +45,18 @@ class CategoryController extends AbstractController
         }
 
         return $this->renderForm('category/new.html.twig', [
-            'categories' => $category,
+            'category' => $category,
             'form' => $form,
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
     #[Route('/{id}', name: 'app_category_show', methods: ['GET'])]
-    public function show(Category $category): Response
+    public function show(Category $category, CategoryRepository $categoryRepository): Response
     {
         return $this->render('category/show.html.twig', [
-            'categories' => $category,
+            'category' => $category,
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
@@ -71,8 +73,9 @@ class CategoryController extends AbstractController
         }
 
         return $this->renderForm('category/edit.html.twig', [
-            'categories' => $category,
+            'category' => $category,
             'form' => $form,
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
