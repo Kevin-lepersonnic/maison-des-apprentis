@@ -22,7 +22,7 @@ security:
             form_login:
                 login_path: account_login
                 check_path: account_login
-                default_target_path: app_home
+                default_target_path: app_category_index
                 always_use_default_target_path: true
             
             logout:

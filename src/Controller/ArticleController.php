@@ -7,6 +7,7 @@ use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Service\FileUploader;
 use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,15 +21,26 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class ArticleController extends AbstractController
 {
     #[Route('/article', name: 'app_article')]
-    public function index(ArticleRepository $articleRepository): Response
+    public function index(ArticleRepository $articleRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
+    // #[Route('/article/{category.id}', name: 'app_category')]
+    // public function categoryView(ArticleRepository $articleRepository, CategoryRepository $categoryRepository): Response
+    // {
+    //     $articles = $articleRepository->findAll();
+
+    //     return $this->render('article/index.html.twig', [
+    //         'categories' => $categoryRepository->findAll(),
+    //     ]);
+    // }
+
     #[Route('/articles/new', name: 'article_create')]
-    public function create(Request $request, EntityManagerInterface $manager, FileUploader $fileUploader){
+    public function create(Request $request, EntityManagerInterface $manager, FileUploader $fileUploader, CategoryRepository $categoryRepository){
 
         $article = new Article();
 
@@ -50,23 +62,29 @@ class ArticleController extends AbstractController
                 
                 $this->addFlash("success", "L'article <strong>{$article->getTitle()}</strong> a bien été crée");
 
-                return $this->redirectToRoute('article_show', ['slug' => $article->getSlug() ]);
+                return $this->redirectToRoute('article_show', [
+                    'slug' => $article->getSlug(),
+                 ]);
             }
 
         return $this->render('article/create.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
     #[Route('/articles/{slug}', name: 'article_show')]
-    public function show($slug, ArticleRepository $articleRepository){
+    public function show($slug, ArticleRepository $articleRepository, CategoryRepository $categoryRepository){
         $article = $articleRepository->findOneBySlug($slug);
-        return $this->render('article/show.html.twig', ["article" => $article,]);
+        return $this->render('article/show.html.twig', [
+            "article" => $article,
+            'categories' => $categoryRepository->findAll(),
+        ]);
     }
 
     #[Route('/articles/{slug}/edit', name: 'article_edit')]
     #[Security("is_granted('ROLE_ADMIN') || is_granted('ROLE_USER') and user === article.getAuthor()")]
-    public function edit(Request $request, Article $article, EntityManagerInterface $manager)
+    public function edit(Request $request, Article $article, EntityManagerInterface $manager, CategoryRepository $categoryRepository)
     {
         $form = $this->createForm(ArticleType::class, $article);
 
@@ -86,7 +104,8 @@ class ArticleController extends AbstractController
 
         return $this->render('article/edit.html.twig', [
             'article' => $article,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 

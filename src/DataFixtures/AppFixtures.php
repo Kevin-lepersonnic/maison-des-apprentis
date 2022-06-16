@@ -148,19 +148,57 @@ class AppFixtures extends Fixture
 
         // --------------- Fixture Category ----------------------
 
-        $categories=[];
+        $angularCat = new Category();
+        $angularCat->setname('Angular')
+                        ->setimage('../img/angular-logo.png')
+                        ->setdescription('framework Front-end');
+        $manager->persist($angularCat);
+        
 
-        for ($i=0; $i < 10 ; $i++) { 
+        $htmlCat = new Category();
+        $htmlCat->setname('HTML')
+                    ->setimage('../img/html-1.png')
+                    ->setdescription('Langage de balisage');
+        $manager->persist($htmlCat);
 
-            $category = new Category();
-            $category   ->setName($faker->word($faker->randomDigit()))
-                        ->setImage("https://picsum.photos/200/300");
-         
-            $manager->persist($category);
-            $categories[] = $category;
-        }
+        $cssCat = new Category();
+        $cssCat->setname('CSS')
+                    ->setimage('../img/css-3.png')
+                    ->setdescription('Langage de style');
+        $manager->persist($cssCat);
 
+        $symfonyCat = new Category();
+        $symfonyCat->setname('Symfony')
+                    ->setimage('../img/symfony-5.png')
+                    ->setdescription('Framework back-end');
+        $manager->persist($symfonyCat);
 
+        $phpCat = new Category();
+        $phpCat->setname('PHP')
+                    ->setimage('../img/3.png')
+                    ->setdescription('Langage back-end');
+        $manager->persist($phpCat);
+
+        $jsCat = new Category();
+        $jsCat->setname('JavaScript')
+                    ->setimage('../img/javascript-1.png')
+                    ->setdescription('Langage Front-end');
+        $manager->persist($jsCat);
+
+        $bootstrapCat = new Category();
+        $bootstrapCat->setname('Bootstrap')
+                    ->setimage('../img/4.png')
+                    ->setdescription('Bibliothèque de style');
+        $manager->persist($bootstrapCat);
+
+        $wpCat = new Category();
+        $wpCat->setname('Wordpress')
+                    ->setimage('../img/wp.png')
+                    ->setdescription('Un CMS au top');
+        $manager->persist($wpCat);
+        
+        $categories=[$angularCat, $htmlCat, $cssCat, $symfonyCat, $phpCat, $jsCat, $bootstrapCat, $wpCat];
+        
         // ----------------  Fixture pour Articles ---------------
         
         for ($i=0; $i < 30 ; $i++) { 
@@ -170,8 +208,12 @@ class AppFixtures extends Fixture
             $author = $users[mt_rand(0, count($users) -1)];
             $category = $categories[mt_rand(0, count($categories) -1)];
             $article->setTitle($faker->word($faker->randomDigit()))
-                    ->setImage("https://www.événementiel.net/wp-content/uploads/2014/02/default-placeholder.png")
-                    ->setContent('<p>'. implode('</p><p>', $faker->words(25)) .'</p>')
+                    ->setImage("https://picsum.photos/200/300?random=".$i)
+                    ->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget dignissim nisl. Nullam quis semper libero. Donec imperdiet tincidunt malesuada. Aliquam a lacus hendrerit, lobortis enim eget, tempor magna. Proin placerat sem a ante dignissim, eu rutrum libero semper. Duis rutrum, augue at elementum vestibulum, leo eros tincidunt nisi, nec iaculis nisl sem vel magna. Donec in laoreet tortor. In in vulputate dui, ac eleifend ante. Pellentesque tempor dolor nec quam malesuada, non facilisis tellus commodo. Pellentesque euismod venenatis tempus. In sed nisi convallis augue rhoncus rhoncus sit amet ut lorem. Nulla vitae purus eu leo auctor molestie a interdum est.<br>
+                    Donec suscipit est est, in commodo tellus aliquam in. Duis eleifend pharetra urna vel accumsan. Quisque pretium tempus erat eu varius. Vivamus fringilla velit lectus, dictum pulvinar nisl fringilla nec. Nullam quis sapien eleifend enim sodales iaculis sed id nibh. Sed et augue lacus. Aliquam posuere consequat sapien tempor auctor. Morbi efficitur dui ac quam pellentesque mollis. Vestibulum a mi ligula. Curabitur placerat vehicula dictum. Vivamus consectetur varius nisi, non vulputate ligula maximus et. Maecenas egestas id velit scelerisque volutpat. Phasellus sed nibh ac elit viverra lobortis.
+                    Nunc blandit, ipsum vel molestie imperdiet, risus justo congue quam, vel molestie quam elit ut enim. Praesent posuere eros eget diam gravida dapibus. Nulla sit amet diam velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur volutpat vel dui eget sodales. Fusce tristique sed ex a sodales. Quisque quis est quis quam ullamcorper bibendum. Quisque suscipit lorem euismod mi fringilla, ut suscipit tellus eleifend. Fusce lacinia dui eleifend, luctus eros nec, viverra justo.<br>
+                    Donec sed vehicula mauris, sed consectetur nibh. Suspendisse potenti. Sed vitae sodales tortor. Proin sed auctor massa. Vestibulum elementum non sem sed rutrum. Vivamus faucibus condimentum tincidunt. Duis rutrum interdum ipsum, ac luctus lacus varius pulvinar. Phasellus commodo nibh vel orci tincidunt porta. Integer scelerisque, ligula non ullamcorper lobortis, tellus neque ornare mi, vel lobortis ante nunc nec leo. Donec scelerisque volutpat nunc, eu convallis turpis. Donec et nulla non purus euismod consectetur. Morbi placerat molestie massa feugiat porttitor. In vulputate facilisis mi, nec vestibulum purus luctus at. Vestibulum laoreet feugiat urna, sit amet interdum arcu aliquet vel.<br>
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam tempor laoreet lacinia. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus bibendum tellus in imperdiet fringilla. Etiam pellentesque velit varius consectetur commodo. Fusce ligula ligula, aliquam id ornare quis, cursus vel magna. Vestibulum tincidunt augue pellentesque ligula cursus volutpat ac non ante. Ut vitae scelerisque neque.')
                     ->setAuthor($author)
                     ->setCategory($category);
         

@@ -1,37 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Page des catégories{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+<img src=" {{asset('/img/f1.jpg')}} " width="100%" height="600px" style="margin-top:-150px;" alt="">
+<div  style="margin-top:-400px; margin-bottom: 100px; margin-left:250px;">
+	<h1 class="display-4 ">Bienvenue <span class="text-primary"> {{app.user.firstname}} </span></h1>
+	<a href="{{path('article_create')}}" class="btn btn-primary mt-5 shadow" style="border-radius:7px; text-align:center; width:150px; padding:12px; background-color:#2780E3; border:0px;">Ecrire un article</a>
+</div>
+<div class="row justify-content-center">
+		{% for category in categories %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+			{% include "partials/card.category.html.twig"  %}
 
-    <a href="{{ path('app_category_new') }}">Create new</a>
-
+		{% endfor %}
+</div>
+	
+   
 {% endblock %}
 {% block footer %}{% endblock %}

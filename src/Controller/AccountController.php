@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\AccountType;
 use App\Repository\UserRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,10 +40,11 @@ class AccountController extends AbstractController
 
     #[Route('/account', name: 'app_account')]
     #[IsGranted('ROLE_ADMIN')]
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('account/index.html.twig', [
             'users' => $userRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 
@@ -73,7 +75,7 @@ class AccountController extends AbstractController
 
     
     #[Route('/account/{slug}/edit', name: 'user_edit')]
-    public function edit(Request $request, User $user, EntityManagerInterface $manager, UserPasswordHasherInterface $encoder)
+    public function edit(Request $request, User $user, EntityManagerInterface $manager, UserPasswordHasherInterface $encoder, CategoryRepository $categoryRepository)
     {
         $form = $this->createForm(AccountType::class, $user);
         $form->handleRequest($request);
@@ -93,7 +95,8 @@ class AccountController extends AbstractController
 
         return $this->render('account/edit.html.twig', [
             'user' => $user,
-            'form'=> $form->createView()
+            'form'=> $form->createView(),
+            'categories' => $categoryRepository->findAll(),
         ]);
 
     }
@@ -112,11 +115,12 @@ class AccountController extends AbstractController
     }
 
     #[Route('/account/{slug}', name: 'user_show')]
-    public function show($slug, UserRepository $userRepository)
+    public function show($slug, UserRepository $userRepository, CategoryRepository $categoryRepository)
     {        
         $user = $userRepository->findOneBySlug($slug);
         return $this->render('account/show.html.twig', [
-            'user' => $user,
+            'user' => $user,            
+            'categories' => $categoryRepository->findAll(),
         ]);
     }
 

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos Catégories{% endblock %}
+
+{% block body %}
+<main class="container bg-light">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Index des Catégories</h1>
+        <div class="d-grid gap-2 m-4 p-3">
+            <a  class="btn btn-lg btn-success" href="{{ path('app_category_new') }}">Créer une nouvelle catégorie</a>
+        </div>
+    </div>
+
+    <table class="table table-hover text-center">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom de la catégorie</th>
+                <th>Nombre d'articles</th>
+                <th>Logo</th>
+                <th colspan="2">Modifier/Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr class="table-active">
+                <td>{{ category.id }}</td>
+                <th>{{ category.name | upper }}</th>
+                <td>{{ category.articles | length }}</td>
+                <td><img width="50px" height="50px" class="rounded-circle mx-5" src="{{category.image}}" alt="{{ category.name }}"></td>
+                <td>
+                    <div>
+                        <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-secondary mx-2">
+                            Modifier la catégorie
+                            <i class="fa fa-pen"></i>
+                        </a>
+                        <form class="d-inline" action="{{ path('app_category_delete', {'id': category.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette article ?');">
+                            <button class="btn btn-danger mx-2">
+                                Supprimer la catégorie
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">Aucune information trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
+{% block footer %}{% endblock %}

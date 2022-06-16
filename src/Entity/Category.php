@@ -25,6 +25,9 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Article::class)]
     private $articles;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $description;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -85,6 +88,18 @@ class Category
                 $article->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

@@ -2,7 +2,6 @@
 
 {% if app.user %}
 
-
 <div class="wrapper d-flex align-items-stretch">
 	<nav id="sidebar">
 		<div
@@ -11,33 +10,24 @@
 			<a href="#"><img class="img logo rounded-circle mb-5" src="{{app.user.avatar}}" alt=""></a>
 			<ul class="list-unstyled components mb-5">
 				<li>
-					<a href="{{path("app_home")}}">Accueil</a>
+					<a href="{{path("app_category_index")}}">Accueil</a>
 				</li>
 			</li>
 			<li>
 				<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Bibliothèque</a>
 				<ul class="collapse list-unstyled" id="homeSubmenu">
-					{# {% for categorie in categories %}
 					<li>
-						<a href="#">{{categorie.name}}</a>
+						<a href="{{path("app_article")}}">Tous les articles</a>
 					</li>
-					{% endfor %} #}
+					{% for category in categories %}
 					<li>
-						<a href="#">All</a>
+						<a href="#">{{category.name}}</a>
 					</li>
-					<li>
-						<a href="#">HTML/CSS</a>
-					</li>
-					<li>
-						<a href="#">JavaScript</a>
-					</li>
-					<li>
-						<a href="#">PHP</a>
-					</li>
+					{% endfor %}
 				</ul>
 			</li>
 			<li>
-				<a href="#">Calendrier</a>
+				<a href=" {{path('article_create')}} ">Écrire un article</a>
 			</li>
 			{# <li>
 				<a href="#">Tableau de bord</a>
@@ -54,10 +44,11 @@
 						<a href="{{path("app_article")}}">Articles</a>
 					</li>
 					<li>
-						<a href="{{path("app_category_index")}}">Catégories</a>
+						<a href="{{path("app_category_admin")}}">Catégories</a>
 					</li>
 				</ul>
 			</li>
+			
 			{# <li>
 				<a href="#">Settings</a>
 			</li> #}
@@ -97,7 +88,10 @@
 					{% if app.user %}
 						<li class="nav-item active">
 							{# <a class="nav-link text-light" href="{{path("app_home")}}">Home</a> #}
-							<p class="text-white pt-2">Bienvenue {{app.user.firstname}} | </p>
+							{# <p class="text-white pt-2">Bienvenue {{app.user.firstname}} | </p> #}
+						</li>
+						<li>
+						<img src=" {{asset('/img/logo-bleu.png')}}" style="height:40px; widht:auto; margin-right:15px" alt="">
 						</li>
 						<li class="nav-item">
 							<a class="nav-link text-light" href="{{ path('user_show' , {'slug': app.user.slug } ) }}">Mon compte</a>
