@@ -5,8 +5,8 @@
 {% block body %}
 <img src=" {{asset('/img/f1.jpg')}} " width="100%" height="600px" style="margin-top:-150px;" alt="">
 <div  style="margin-top:-400px; margin-bottom: 100px; margin-left:250px;">
-	<h1 class="display-3 ">Bienvenue <span class="text-primary"> {{app.user.firstname}} </span></h1>
-	<a href="{{path('article_create')}}" class="btn btn-primary mt-5">Ecrire un article</a>
+	<h1 class="display-4 ">Bienvenue <span class="text-primary"> {{app.user.firstname}} </span></h1>
+	<a href="{{path('article_create')}}" class="btn btn-primary mt-5 shadow" style="border-radius:7px; text-align:center; width:150px; padding:12px; background-color:#2780E3; border:0px;">Ecrire un article</a>
 </div>
 <div class="row justify-content-center">
 		{% for category in categories %}
