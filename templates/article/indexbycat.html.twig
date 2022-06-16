@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page des articles{% endblock %}
+
+{% block body %}
+	<h1> {{categorie.name}} </h1>
+	<div class=" row justify-content-center">
+
+		{% for article in articles %}
+
+			{% include "partials/card.article.html.twig"  %}
+
+		{% endfor %}
+
+	</div>
+	
+{% endblock %}
