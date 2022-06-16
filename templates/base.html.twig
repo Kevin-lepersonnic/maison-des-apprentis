@@ -19,6 +19,8 @@
 		</title>
 	</head>
 	<body class="bg-dark">
+	
+	{% block imgfond %}{% endblock %}
 		{% include "partials/header.html.twig" %}
 		<div class="full-container content">
 		{% block body %}{% endblock %}
@@ -32,6 +34,7 @@
 		{% include "partials/footer.html.twig" %}
 	</footer>
 		{% endblock %}
+
 
     <head>
 
