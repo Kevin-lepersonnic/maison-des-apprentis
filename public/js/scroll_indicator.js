@@ -24,5 +24,4 @@ function indicatorAnimation() {
   } else {
     scrollIndicator.style.transform = "scaleX(0)"
   }
-
 }
