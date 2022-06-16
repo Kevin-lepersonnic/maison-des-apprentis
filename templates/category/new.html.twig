@@ -3,9 +3,12 @@
 {% block title %}New Category{% endblock %}
 
 {% block body %}
-    <h1>Create new Category</h1>
-
-    {{ include('category/_form.html.twig') }}
-
-    <a href="{{ path('app_category_index') }}">back to list</a>
+<div class="page-content">
+    <div class="form-v6-content">
+        <div class="form-detail" >
+            <h2>Créer une nouvelle catégorie</h2>
+            <div>{{form(form)}}</div>
+        </div>
+    </div>
+</div>
 {% endblock %}
