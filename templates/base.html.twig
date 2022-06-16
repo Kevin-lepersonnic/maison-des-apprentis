@@ -12,19 +12,19 @@
     	<link rel="stylesheet" href="{{asset('../css/user_show.css')}}"/>
     	<link rel="stylesheet" href="{{asset('../css/cat_view.css')}}"/>
     	<link rel="stylesheet" href="{{asset('../css/card_article.css')}}"/>
+		<link rel="stylesheet" href="{{asset('../css/scroll_indicator.css')}}">
 		<title>La Maison Des Apprentis -
 			{% block title %}{% endblock %}
 		</title>
 	</head>
 	<body class="bg-dark">
 		{% include "partials/header.html.twig" %}
-		<div class="full-container">
+		<div class="full-container content">
 		{% block body %}{% endblock %}
 		</div>
 
 		{% include "partials/scripts.html.twig" %}
 		{% include "partials/script.html.twig" %}
-		<script src="{{ asset('../../js/js.js') }}"></script>
 	</body>
 
 		{% block footer %}
