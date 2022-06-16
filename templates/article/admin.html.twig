@@ -1,40 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vos Catégories{% endblock %}
+{% block title %}Vos Articles{% endblock %}
 
 {% block body %}
 <main class="container bg-light">
     <div class="d-flex justify-content-between align-items-center">
-        <h1>Index des Catégories</h1>
-        <div class="d-grid gap-2 m-4 p-3">
+        <h1>Index des Articles</h1>
+        {# <div class="d-grid gap-2 m-4 p-3">
             <a  class="btn btn-lg btn-success" href="{{ path('app_category_new') }}">Créer une nouvelle catégorie</a>
-        </div>
+        </div> #}
     </div>
 
     <table class="table table-hover text-center">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nom de la catégorie</th>
-                <th>Nombre d'articles</th>
-                <th>Logo</th>
+                <th>Titre de l'article</th>
+                <th>Auteur</th>
+                <th>Date de création</th>
+                <th>Image</th>
+                <th>Nombre de supports</th>
                 <th colspan="2">Modifier/Supprimer</th>
             </tr>
         </thead>
         <tbody>
-        {% for category in categories %}
+        {% for article in articles %}
             <tr class="table-active">
-                <td>{{ category.id }}</td>
-                <th>{{ category.name | upper }}</th>
-                <td>{{ category.articles | length }}</td>
-                <td><img width="50px" height="50px" class="rounded-circle mx-5" src="{{category.image}}" alt="{{ category.name }}"></td>
-                <td>
+                <td>{{ article.id }}</td>
+                <th>{{ article.title | upper }}</th>
+                <td>{{ article.author.fullname }}</td>
+                <td>{{ article.creationDate | date('d/m/Y') }}</td>
+                <td><img width="50px" height="50px" class="rounded-circle mx-5" src="{{article.image}}" alt="{{ article.title }}"></td>
+                <td>{{ article.supportFilename | length }}</td>
+                <td class="">
                     <div>
-                        <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-secondary mx-2">
+                        <a href="{{ path('article_edit' , {'slug': article.slug } ) }}" class="btn btn-secondary mx-2">
                             Modifier
                             <i class="fa fa-pen"></i>
                         </a>
-                        <form class="d-inline" action="{{ path('app_category_delete', {'id': category.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cette catégorie ?');">
+                        <form class="d-inline" action="{{ path('article_delete' , {'slug': article.slug } ) }}" onsubmit="return confirm('Etes-vous sûr de vouloir supprimer cet article ?');">
                             <button class="btn btn-danger mx-2">
                                 Supprimer
                                 <i class="fa fa-trash"></i>

@@ -29,6 +29,15 @@ class ArticleController extends AbstractController
         ]);
     }
 
+    #[Route('article/admin', name: 'app_article_admin', methods: ['GET'])]
+    public function admin(ArticleRepository $articleRepository, CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('article/admin.html.twig', [
+             'articles' => $articleRepository->findAll(),
+             'categories' => $categoryRepository->findAll(),
+         ]);
+    }
+
     // #[Route('/article/{category.id}', name: 'app_category')]
     // public function categoryView(ArticleRepository $articleRepository, CategoryRepository $categoryRepository): Response
     // {
