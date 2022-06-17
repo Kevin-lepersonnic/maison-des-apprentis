@@ -9,6 +9,7 @@ use App\Service\FileUploader;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,15 +39,6 @@ class ArticleController extends AbstractController
          ]);
     }
 
-    // #[Route('/article/{category.id}', name: 'app_category')]
-    // public function categoryView(ArticleRepository $articleRepository, CategoryRepository $categoryRepository): Response
-    // {
-    //     $articles = $articleRepository->findAll();
-
-    //     return $this->render('article/index.html.twig', [
-    //         'categories' => $categoryRepository->findAll(),
-    //     ]);
-    // }
 
     #[Route('/articles/new', name: 'article_create')]
     public function create(Request $request, EntityManagerInterface $manager, FileUploader $fileUploader, CategoryRepository $categoryRepository){
@@ -80,6 +72,21 @@ class ArticleController extends AbstractController
             'form' => $form->createView(),
             'categories' => $categoryRepository->findAll(),
         ]);
+    }
+
+    #[Route('/articles/{id}', name: 'app_article_cat')]
+    public function showCat( $id, ArticleRepository $articleRepository, CategoryRepository $categoryRepository){
+    
+        
+        $categoryName = $categoryRepository->findOneById($id);
+        $article = $articleRepository->findBy(array('category' => $categoryName));
+        
+        return $this->render('article/indexbycat.html.twig', [
+            'articles' => $article,
+            'categories' => $categoryRepository->findAll(),
+            'categorie' =>$categoryName,
+        ]);
+        
     }
 
     #[Route('/articles/{slug}', name: 'article_show')]
@@ -129,4 +136,6 @@ class ArticleController extends AbstractController
       
         return $this->redirectToRoute('app_article');
     }
+
+   
 }

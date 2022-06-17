@@ -28,6 +28,9 @@ class Category
     #[ORM\Column(type: 'string', length: 255)]
     private $description;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $banniere;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -100,6 +103,18 @@ class Category
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getBanniere(): ?string
+    {
+        return $this->banniere;
+    }
+
+    public function setBanniere(?string $banniere): self
+    {
+        $this->banniere = $banniere;
 
         return $this;
     }
