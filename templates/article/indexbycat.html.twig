@@ -4,6 +4,9 @@
 
 {% block body %}
 	<img src=" {{categorie.banniere}} " width="auto" max-height="200px" style="margin-top:-30px;" alt="">
+	{# <div  style="margin-bottom: 100px; margin-left:250px;">
+		<a href="{{path('article_create')}}" class="btn btn-primary mt-5 shadow" style="border-radius:7px; text-align:center; width:150px; padding:12px; background-color:#2780E3; border:0px;">Ecrire un article</a>
+	</div> #}
 	<div class=" row justify-content-center">
 
 		{% for article in articles %}

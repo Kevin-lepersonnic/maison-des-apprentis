@@ -32,8 +32,10 @@
 			{# <li>
 				<a href="#">Tableau de bord</a>
 			</li> #}
-
-			
+			{# <pre>
+				{{ dump(role) }}
+			</pre> #}
+			{% if is_granted('ROLE_ADMIN') %}
 			<li>
 				<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tableau de bord</a>
 				<ul class="collapse list-unstyled" id="pageSubmenu">
@@ -48,6 +50,7 @@
 					</li>
 				</ul>
 			</li>
+			{% endif %}
 			
 			{# <li>
 				<a href="#">Settings</a>
