@@ -151,50 +151,58 @@ class AppFixtures extends Fixture
         $angularCat = new Category();
         $angularCat->setname('Angular')
                         ->setimage('../img/angular-logo.png')
-                        ->setdescription('framework Front-end');
+                        ->setdescription('framework Front-end')
+                        ->setbanniere('../img/angular_cat.svg');
         $manager->persist($angularCat);
         
 
         $htmlCat = new Category();
         $htmlCat->setname('HTML')
                     ->setimage('../img/html-1.png')
-                    ->setdescription('Langage de balisage');
+                    ->setdescription('Langage de balisage')
+                    ->setbanniere('../img/html_cat.svg');
         $manager->persist($htmlCat);
 
         $cssCat = new Category();
         $cssCat->setname('CSS')
                     ->setimage('../img/css-3.png')
-                    ->setdescription('Langage de style');
+                    ->setdescription('Langage de style')
+                    ->setbanniere('../img/css_cat.svg');
         $manager->persist($cssCat);
 
         $symfonyCat = new Category();
         $symfonyCat->setname('Symfony')
                     ->setimage('../img/symfony-5.png')
-                    ->setdescription('Framework back-end');
+                    ->setdescription('Framework back-end')
+                    ->setbanniere('../img/symfony_cat.svg');
         $manager->persist($symfonyCat);
 
         $phpCat = new Category();
         $phpCat->setname('PHP')
                     ->setimage('../img/3.png')
-                    ->setdescription('Langage back-end');
+                    ->setdescription('Langage back-end')
+                    ->setbanniere('../img/php3_cat.svg');
         $manager->persist($phpCat);
 
         $jsCat = new Category();
         $jsCat->setname('JavaScript')
                     ->setimage('../img/javascript-1.png')
-                    ->setdescription('Langage Front-end');
+                    ->setdescription('Langage Front-end')
+                    ->setbanniere('../img/js_cat.svg');
         $manager->persist($jsCat);
 
         $bootstrapCat = new Category();
         $bootstrapCat->setname('Bootstrap')
                     ->setimage('../img/4.png')
-                    ->setdescription('Bibliothèque de style');
+                    ->setdescription('Bibliothèque de style')
+                    ->setbanniere('../img/bootstrap_cat.svg');
         $manager->persist($bootstrapCat);
 
         $wpCat = new Category();
         $wpCat->setname('Wordpress')
                     ->setimage('../img/wp.png')
-                    ->setdescription('Un CMS au top');
+                    ->setdescription('Un CMS au top')
+                    ->setbanniere('../img/wordpress_cat.svg');
         $manager->persist($wpCat);
         
         $categories=[$angularCat, $htmlCat, $cssCat, $symfonyCat, $phpCat, $jsCat, $bootstrapCat, $wpCat];

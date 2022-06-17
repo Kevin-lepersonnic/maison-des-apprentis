@@ -12,14 +12,17 @@
     	<link rel="stylesheet" href="{{asset('../css/user_show.css')}}"/>
     	<link rel="stylesheet" href="{{asset('../css/cat_view.css')}}"/>
     	<link rel="stylesheet" href="{{asset('../css/card_article.css')}}"/>
+    	<link rel="stylesheet" href="{{asset('../css/article_show.css')}}"/>
 		<link rel="stylesheet" href="{{asset('../css/scroll_indicator.css')}}">
 		<title>La Maison Des Apprentis -
 			{% block title %}{% endblock %}
 		</title>
 	</head>
 	<body class="bg-dark">
+	
+	{% block imgfond %}{% endblock %}
 		{% include "partials/header.html.twig" %}
-		<div class="full-container content">
+		<div class="container-fluid content">
 		{% block body %}{% endblock %}
 		</div>
 
@@ -31,6 +34,7 @@
 		{% include "partials/footer.html.twig" %}
 	</footer>
 		{% endblock %}
+
 
     <head>
 

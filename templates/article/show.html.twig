@@ -6,7 +6,7 @@
 
 {% block body %}
 
-	<div class="shadow border p-5 my-5">
+	{# <div class="shadow border p-5 my-5">
 		<h1 class="my-5 text-center border shadow">
 			{{article.title | title}}
 		</h1>
@@ -28,10 +28,10 @@
 			<hr>
 		</div>
 
-		<hr>
+		<hr> #}
 		{# PENSER A RECUPERER LE IF QUI SUIT POUR LE TEMPLATE FINAL #}
 
-		{% if app.user and app.user == article.author %}
+		{# {% if app.user and app.user == article.author %}
 
 			<div>
 				<a href="{{ path('article_edit' , {'slug': article.slug } ) }}" class="btn btn-info mx-2">
@@ -57,6 +57,66 @@
 				<i class="fa fa-comments my-2"></i>
 			</p>
 		</div>
-	</div>
+	</div> #}
 
+<div class="full-container mt-5 mb-5">
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="d-flex justify-content-between p-2 px-3">
+                    <div class="d-flex flex-row align-items-center"> <img src="{{article.author.avatar}}" width="50" class="rounded-circle">
+                        <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">{{article.author.fullname}}</span> <small class="text-primary">Statut: Bronze</small> </div>
+                    </div>
+                    <div class="d-flex flex-row mt-1 ellipsis"> <small class="mr-2">Écrit le: {{article.creationDate | date('d/m/Y à H:i')}}</small> </div>
+                </div> <img src="{{article.image}}" class="img-fluid" style="max-height:600px; width:100%">
+                <div class="px-5">
+					<h1 class="text-center my-5">{{article.title | title}}</h1>
+                    <p class="text-justify">{{article.content | raw}}</p>
+					{% if article.supportFilename != NULL %}
+						<a href="{{ asset('uploads/supports/' ~ article.supportFilename) }}" class="btn btn-info mt-5" style="border-radius:5px;">
+							Télécharger le support
+							<i class="fa fa-pen"></i>
+						</a>
+					{% endif %}
+                    <hr class="mt-5">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-row icons d-flex align-items-center"><i class="fas fa-thumbs-up pl-5 text-primary"> 10</i></div>
+						{% if app.user and app.user == article.author %}
+							<div>
+								<a href="{{ path('article_edit' , {'slug': article.slug } ) }}" class="btn btn-info mx-2" style="border-radius:5px;">
+									Modifier l'article
+									<i class="fa fa-pen"></i>
+								</a>
+
+								<form class="d-inline" action="{{ path('article_delete' , {'slug': article.slug } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette article ?');">
+									<button class="btn btn-danger mx-2" style="border-radius:5px;">
+										Supprimer l'article
+										<i class="fa fa-trash"></i>
+									</button>
+								</form>
+							</div>
+						{% endif %}
+                        <div class="d-flex flex-row "> <span>2 commentaires</span> <span class="ml-2">Partager</span></div>
+                    </div>
+                    <hr>
+                    <div class="comments mt-4">
+                        <div class="d-flex flex-row mb-2"> <img src="https://randomuser.me/api/portraits/men/74.jpg" width="40" class="rounded-image">
+                            <div class="d-flex flex-column ml-2"> <span class="name">Daniel Frozer</span> <small class="comment-text">I like this alot! thanks alot</small>
+                                <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>18 mins</small> </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row mb-2"> <img src="https://randomuser.me/api/portraits/women/74.jpg" width="40" class="rounded-image">
+                            <div class="d-flex flex-column ml-2"> <span class="name">Elizabeth goodmen</span> <small class="comment-text">Thanks for sharing!</small>
+                                <div class="d-flex flex-row align-items-center status"> <small>Like</small> <small>Reply</small> <small>Translate</small> <small>8 mins</small> </div>
+                            </div>
+                        </div>
+                        <div class="comment-input my-5"> <input type="text" class="form-control" value="Votre commentaire ici">
+                            <div class="fonts"> <i class="fa fa-camera"></i> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

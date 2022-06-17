@@ -3,9 +3,9 @@
 {% if app.user %}
 
 <div class="wrapper d-flex align-items-stretch">
-	<nav id="sidebar">
+	<nav id="sidebar" class='active' >
 		<div
-			class="p-4 pt-5">
+			class="p-4 pt-5 active sticky-top">
 			<!-- photo de profile possibilité de faire un accès au profile en cliquant dessus -->
 			<a href="#"><img class="img logo rounded-circle mb-5" src="{{app.user.avatar}}" alt=""></a>
 			<ul class="list-unstyled components mb-5">
@@ -21,7 +21,7 @@
 					</li>
 					{% for category in categories %}
 					<li>
-						<a href="#">{{category.name}}</a>
+						<a href="{{path('app_article_cat', {'id': category.id})}}">{{category.name}}</a>
 					</li>
 					{% endfor %}
 				</ul>
@@ -66,17 +66,20 @@
 <!-- Page Content  -->
 <div id="content">
 
-	<nav class="navbar navbar-expand-md navbar-light bg-dark m-4 ">
+	<nav class="navbar navbar-expand-md navbar-light bg-dark m-4">
 		<div class="container-fluid">
 {% if app.user %}
 
-			<button type="button" id="sidebarCollapse" class="btn btn-dark">
+			<button type="button" id="sidebarCollapse" class="btn btn-dark navlat">
 				<i class="fa fa-bars"></i>
 				<span class="sr-only">Toggle Menu</span>
 			</button>
 			{% endif %}
-			<button class="btn btn-dark d-inline-block d-md-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<i class="fa fa-bars"></i>
+			<div class="logo mx-3">
+			<img src="{{asset('../img/logo complet.svg')}}" width ="250" alt="logo">
+			</div>
+			<button class="btn btn-dark d-inline-block d-md-none ml-auto navlog" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-user"></i>
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">

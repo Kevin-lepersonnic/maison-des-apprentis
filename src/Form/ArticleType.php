@@ -23,15 +23,15 @@ class ArticleType extends AbstractType
         $builder
             ->add('title', TextType::class, [ 
                 'label' => "Titre de l'article", 
-                "attr" => ["placeholder" => "votre titre ici"]
+                "attr" => ["placeholder" => "Titre de votre article"]
             ])
             ->add('image', UrlType::class, [ 
                 'label' => "Image de l'article", 
-                "attr" => ["placeholder" => "Veuillez mettre le lien de l'image ici"]
+                "attr" => ["placeholder" => "Image de votre article, veuillez mettre le lien ici"]
             ])
             ->add('content', CKEditorType::class, [ 
                 'label' => "Contenu de l'article", 
-                "attr" => ["placeholder" => "Veuillez entrer votre contenu"]
+                "attr" => ["placeholder" => "Contenu de votre article"]
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
@@ -40,6 +40,7 @@ class ArticleType extends AbstractType
             ])
             ->add('support', FileType::class, [
                 'label' => 'Document support (PDF, JPG, JPEG, PNG)',
+                "attr" => ["placeholder" => "Joindre un document à l'article (facultatif)"],
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [

@@ -41,7 +41,7 @@
         <div class="card text-white" id="cardArt"><img class="card-img" id="cardArt-img"  src="{{article.image}}"/>
             <div class="card-img-overlay" id="cardArt-img-overlay">
                 <h2 class="card-title">{{article.title | title}}</h2>
-                <p class="card-text">{{article.content [:200]}} ...</p>
+                <p class="card-text">{{article.content [:200] | raw}} ...</p>
                 <a class="btn btn-outline-light mb-4" href="{{path("article_show", {'slug':article.slug} ) }}">Lire la suite</a>
                 <p class="card-text text-bas-card mt-3">Catégorie : {{article.category.name }}</p>
                 <p class="card-text text-bas-card">Auteur : {{article.author.fullname | title}}</p>
