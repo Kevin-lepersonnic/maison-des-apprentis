@@ -78,11 +78,21 @@
 				<span class="sr-only">Toggle Menu</span>
 			</button>
 			{% endif %}
+
+			{% if app.user %}
 			<div class="logo mx-3">
 			<a href="{{path("app_category_index")}}">
 			<img src="{{asset('../img/logo complet.svg')}}" width ="250" alt="logo">
 			</a>
 			</div>
+			{% else %}
+				
+			<div class="logo mx-3">
+			<a href="#">
+			<img src="{{asset('../img/logo complet.svg')}}" width ="250" alt="logo">
+			</a>
+			</div>
+			{% endif %}
 			<button class="btn btn-dark d-inline-block d-md-none ml-auto navlog" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<i class="fas fa-user"></i>
 			</button>
