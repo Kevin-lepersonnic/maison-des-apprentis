@@ -74,7 +74,7 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/articles/{id}', name: 'app_article_cat')]
+    #[Route('/articles/category/{id}', name: 'app_article_cat')]
     public function showCat( $id, ArticleRepository $articleRepository, CategoryRepository $categoryRepository){
     
         
@@ -84,7 +84,7 @@ class ArticleController extends AbstractController
         return $this->render('article/indexbycat.html.twig', [
             'articles' => $article,
             'categories' => $categoryRepository->findAll(),
-            'categorie' =>$categoryName,
+            'category' =>$categoryName,
         ]);
         
     }
@@ -97,6 +97,9 @@ class ArticleController extends AbstractController
             'categories' => $categoryRepository->findAll(),
         ]);
     }
+
+    
+  
 
     #[Route('/articles/{slug}/edit', name: 'article_edit')]
     #[Security("is_granted('ROLE_ADMIN') || is_granted('ROLE_USER') and user === article.getAuthor()")]
