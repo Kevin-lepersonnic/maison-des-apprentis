@@ -16,12 +16,16 @@ class CategoryType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [ 
-                'label' => "Titre de l'article", 
+                'label' => "Titre de la catégorie", 
                 "attr" => ["placeholder" => "Titre de votre catégorie"]
             ])
             ->add('image', UrlType::class, [ 
-                'label' => "Image de l'article", 
+                'label' => "Image de la catégorie", 
                 "attr" => ["placeholder" => "Image de votre catégorie, veuillez mettre le lien ici"]
+            ])
+            ->add('banniere', UrlType::class, [ 
+                'label' => "Banniere de la catégorie", 
+                "attr" => ["placeholder" => "Bannière de votre catégorie, veuillez mettre le lien ici"]
             ])
             ->add('Envoyer', SubmitType::class);
         ;
